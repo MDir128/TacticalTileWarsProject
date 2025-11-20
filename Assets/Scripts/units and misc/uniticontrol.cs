@@ -7,7 +7,7 @@ using UnityEngine;
 public class uniticontrol : MonoBehaviour
 {
     [Header("характеристики и настройки")]
-    [SerializeField] public statblock statblock;
+    [SerializeField] public statblock statblock = null;
     [SerializeField] public string anemy_squadname;
     [SerializeField] public string my_squadname;
     [SerializeField] public string my_teamname;
@@ -20,7 +20,7 @@ public class uniticontrol : MonoBehaviour
     void Start()
     {
         enamiescache = new Dictionary<GameObject , uniticontrol>();
-        statblock = new statblock();
+        if (statblock == null) {statblock = new statblock();}
         targetted_enamy = null;
         recharge = 0;
     }
