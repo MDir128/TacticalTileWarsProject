@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class uniticontrol : MonoBehaviour
 {
-    [Header("характеристики и настройки")]
+    [Header("options")]
     [SerializeField] public statblock statblock = null;
     [SerializeField] public string anemy_squadname;
     [SerializeField] public string my_squadname;

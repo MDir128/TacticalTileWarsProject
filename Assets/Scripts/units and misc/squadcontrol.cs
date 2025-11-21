@@ -3,7 +3,6 @@ using UnityEngine;
 public class squadcontrol : MonoBehaviour
 {
     [Header("squad stats")]
-    [SerializeField] statblock squadstats;
     [SerializeField] public float atackrange = 1.5f;
     [SerializeField] public float walkrange = 3f;
     [SerializeField] public string our_teamname;
@@ -20,50 +19,64 @@ public class squadcontrol : MonoBehaviour
     [SerializeField] public GameObject basedEnemyName;
     [SerializeField] public Color squadcolor;
     public float speed = 0.5f;
+    [SerializeField] statblock squadstats;
     void Start()
     {
         units = new GameObject[squad_size];
         for (int i = 0; i < units.Length; i++) {
             units[i] = Instantiate(unit_prefab, transform);
             uniticontrol uniticontrol = units[i].GetComponentInChildren<uniticontrol>();
-            uniticontrol.my_squadname = our_teamname+this_squadname;
+            uniticontrol.my_squadname = our_teamname + this_squadname;
             uniticontrol.my_teamname = our_teamname;
             SpriteRenderer renderer = units[i].GetComponentInChildren<SpriteRenderer>();
             renderer.color = squadcolor;
         }
         
         SetPositions();
-        SetAnemySquad(null);
+        SetEnemySquad(null);
         //SetAnemySquad(basedEnemyName.GetComponent<squadcontrol>()); //так выставл€етс€ противник
     }
     private void FixedUpdate()
     {
-        
+        if (basedEnemyName != null)
+        {
+            SetEnemySquad(basedEnemyName.GetComponent<squadcontrol>());
+        }
     }
     public void UpdateOverallHealth()
     {
         float health_sum = 0;
         for (int i = 0; i < units.Length; i++)
         {
-            health_sum += units[i].GetComponent<uniticontrol>().statblock.health;
+            if (units[i] != null)
+            {
+                health_sum += units[i].GetComponent<uniticontrol>().statblock.health;
+            }
         }
         overallhealth = health_sum;
     } // эта функци€ обновл€ет поле общего здоровь€ отр€да
-    public void SetAnemySquad(squadcontrol Enemy)
+    public void SetEnemySquad(squadcontrol Enemy)
     {
+        if (Enemy != null) { 
         string enemy_name =Enemy.our_teamname + Enemy.this_squadname;
         for (int i = 0; i < units.Length; i++)
         {
-            uniticontrol uniticontrol = units[i].GetComponentInChildren<uniticontrol>();
-            uniticontrol.anemy_squadname=enemy_name;
-        }
+                if (units[i] != null)
+                {
+                    uniticontrol uniticontrol = units[i].GetComponentInChildren<uniticontrol>();
+                    uniticontrol.anemy_squadname = enemy_name;
+                }
+        }}
     } //эта функци€ определ€ет сквад противника под атаку
     public void SetPositions()
     {
         Unit_formation formation = new Unit_formation(new SkirmishGen());
         Vector3[] positions = formation.Genarate_formation(squad_size, transform.position, 3f);
         for (int i = 0; i < units.Length; i++) {
-            units[i].transform.position = positions[i];
+            if (units[i] != null)
+            {
+                units[i].transform.position = positions[i];
+            }
         }
     } // Ёта функци€ обновл€ет построение отр€да, переставл€€ целевые позиции юнитов по активному генератору позиций (в данном случае - рассыпной)
     public void Gotopoint_global(Vector3 point)
