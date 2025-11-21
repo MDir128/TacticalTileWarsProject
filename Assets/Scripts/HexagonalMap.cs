@@ -28,9 +28,9 @@ public class HexagonalMap : MonoBehaviour
     public Vector2 noiseOffset;
 
     [Header("Tile Prefabs")]
-    public GameObject waterTilePrefab;
-    public GameObject plainTilePrefab;
-    public GameObject mountainTilePrefab;
+    public GameObject[] waterTilePrefabs;
+    public GameObject[] plainTilePrefabs;
+    public GameObject[] mountainTilePrefabs;
 
     private Dictionary<Vector2Int, HexTile> hexGrid = new Dictionary<Vector2Int, HexTile>();
     private Dictionary<Vector2Int, GameObject> tileObjects = new Dictionary<Vector2Int, GameObject>();
@@ -139,10 +139,17 @@ public class HexagonalMap : MonoBehaviour
     {
         switch (type)
         {
-            case TileType.Water: return waterTilePrefab;
-            case TileType.Plain: return plainTilePrefab;
-            case TileType.Mountain: return mountainTilePrefab;
-            default: return plainTilePrefab;
+            case TileType.Water:
+                int randomIndex_1 = UnityEngine.Random.Range(0, 3);
+                return waterTilePrefabs[randomIndex_1];
+            case TileType.Plain:
+                int randomIndex_2 = UnityEngine.Random.Range(0, 3);
+                return plainTilePrefabs[randomIndex_2];
+            case TileType.Mountain:
+                int randomIndex_3 = UnityEngine.Random.Range(0, 3);
+                return mountainTilePrefabs[randomIndex_3];
+            default:
+                return plainTilePrefabs[0];
         }
     }
 

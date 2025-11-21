@@ -150,13 +150,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HexagonalMap
   mapRadius: 10
   hexSize: 1
-  noiseScale: 0.15
+  noiseScale: 0.12
   waterThreshold: 0.3
   mountainThreshold: 0.7
   noiseOffset: {x: 200, y: 150}
-  waterTilePrefab: {fileID: 1733860850886431893, guid: 9a08f61d4aea1344eb1ab8ea68b23643, type: 3}
-  plainTilePrefab: {fileID: 7773518360101138650, guid: 17f4d7a12513d2d47b1c04948636a54b, type: 3}
-  mountainTilePrefab: {fileID: 1000866195894739645, guid: 0e9613188f9365d47a1c8a96989f27b5, type: 3}
+  waterTilePrefabs:
+  - {fileID: 6632757853155545280, guid: 79b0df73c90343c45b74c78a7d934010, type: 3}
+  - {fileID: 7347903961718572642, guid: fcaa03610078bb24abc201dcfecda26b, type: 3}
+  - {fileID: 799354144885895173, guid: 2dfd06ecf335c3e4c80c4f8c3fea8c04, type: 3}
+  plainTilePrefabs:
+  - {fileID: 1892281636812849976, guid: d65336dd039b3654d9b42533c5caf64d, type: 3}
+  - {fileID: 2884592697411962781, guid: 994aef1ba10a85344bcc8eb22c6d2106, type: 3}
+  - {fileID: 3170209528613940725, guid: 313825958f79d30408a0f1e8fe66d75b, type: 3}
+  mountainTilePrefabs:
+  - {fileID: 515504068955793955, guid: aaef1066932cba840be79cdde0f4bb8f, type: 3}
+  - {fileID: 6454461332464142000, guid: f0aac9cc78041204bae949a7c956b45f, type: 3}
+  - {fileID: 3311968454211225236, guid: 00019de142c95504ea9924b05b79a1d8, type: 3}
 --- !u!4 &1077030408
 Transform:
   m_ObjectHideFlags: 0
