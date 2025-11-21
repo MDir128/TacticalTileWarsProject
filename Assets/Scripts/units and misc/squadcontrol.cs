@@ -9,6 +9,7 @@ public class squadcontrol : MonoBehaviour
     [SerializeField] public string our_teamname;
     [SerializeField] public string this_squadname;
     [SerializeField] public int squad_size;
+    [SerializeField] public float overallhealth;
 
     [SerializeField] public float damage = 2f;
     [SerializeField] public float atackdelay = 1f;
@@ -16,7 +17,7 @@ public class squadcontrol : MonoBehaviour
     [Header("misc")]
     [SerializeField] public GameObject[] units;
     [SerializeField] public GameObject unit_prefab;
-    [SerializeField] public string basedAnemyName;
+    [SerializeField] public GameObject basedEnemyName;
     [SerializeField] public Color squadcolor;
     public float speed = 0.5f;
     void Start()
@@ -32,20 +33,31 @@ public class squadcontrol : MonoBehaviour
         }
         
         SetPositions();
-        SetAnemySquad(basedAnemyName);
+        SetAnemySquad(null);
+        //SetAnemySquad(basedEnemyName.GetComponent<squadcontrol>()); //так выставляется противник
     }
     private void FixedUpdate()
     {
         
     }
-    public void SetAnemySquad(string anemy_name)
+    public void UpdateOverallHealth()
     {
+        float health_sum = 0;
+        for (int i = 0; i < units.Length; i++)
+        {
+            health_sum += units[i].GetComponent<uniticontrol>().statblock.health;
+        }
+        overallhealth = health_sum;
+    } // эта функция обновляет поле общего здоровья отряда
+    public void SetAnemySquad(squadcontrol Enemy)
+    {
+        string enemy_name =Enemy.our_teamname + Enemy.this_squadname;
         for (int i = 0; i < units.Length; i++)
         {
             uniticontrol uniticontrol = units[i].GetComponentInChildren<uniticontrol>();
-            uniticontrol.anemy_squadname=anemy_name;
+            uniticontrol.anemy_squadname=enemy_name;
         }
-    }
+    } //эта функция определяет сквад противника под атаку
     public void SetPositions()
     {
         Unit_formation formation = new Unit_formation(new SkirmishGen());
@@ -53,5 +65,20 @@ public class squadcontrol : MonoBehaviour
         for (int i = 0; i < units.Length; i++) {
             units[i].transform.position = positions[i];
         }
+    } // Эта функция обновляет построение отряда, переставляя целевые позиции юнитов по активному генератору позиций (в данном случае - рассыпной)
+    public void Gotopoint_global(Vector3 point)
+    {
+        transform.position = Vector3.MoveTowards(
+            transform.position, point, squadstats.speed * Time.deltaTime
+            );
+    } // перемещение по глобальным координатам. *Нужно будет переработать, чтобы двигать юнитов по тодельности, а не весь сет.
+      // Скорее всего, нужно будет в мозгах юнита убрать родительский префаб, сделав самостоятельным объектом и включать им функцию возращения на позицию. Но это потом.
+    public void Gotopoint_local()
+    {
+
+    } // заглушка = должно по идее заставлять отряд двигаться к координатам, относительно командира
+    public statblock GetEnemyStats_statblock(squadcontrol Enemy)
+    {
+        return Enemy.squadstats;
     }
 }
