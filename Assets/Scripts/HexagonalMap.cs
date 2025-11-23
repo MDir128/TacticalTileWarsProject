@@ -1,11 +1,16 @@
-using UnityEngine;
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public enum TileType
 {
     Water,
     Plain,
-    Mountain
+    Mountain,
+    Castle1,
+    Castle2,
+    Castle3,
+    Castle4
 }
 
 public class HexTile
@@ -31,6 +36,10 @@ public class HexagonalMap : MonoBehaviour
     public GameObject[] waterTilePrefabs;
     public GameObject[] plainTilePrefabs;
     public GameObject[] mountainTilePrefabs;
+    public GameObject[] castle_1_TilePrefabs;
+    public GameObject[] castle_2_TilePrefabs;
+    public GameObject[] castle_3_TilePrefabs;
+    public GameObject[] castle_4_TilePrefabs;
 
     private Dictionary<Vector2Int, HexTile> hexGrid = new Dictionary<Vector2Int, HexTile>();
     private Dictionary<Vector2Int, GameObject> tileObjects = new Dictionary<Vector2Int, GameObject>();
@@ -40,6 +49,7 @@ public class HexagonalMap : MonoBehaviour
     {
         GenerateHexGrid();
         ApplyPerlinNoise();
+        PlaceCastles();
         VisualizeTiles();
     }
 
@@ -107,6 +117,103 @@ public class HexagonalMap : MonoBehaviour
         }
     }
 
+    private void PlaceCastles()
+    {
+        Vector2Int[] corners = new Vector2Int[]
+        {
+            new Vector2Int(mapRadius, 0),             // правый
+            new Vector2Int(-mapRadius, 0),            // левый
+            new Vector2Int(0, mapRadius),             // верхний правый
+            new Vector2Int(-mapRadius, mapRadius),    // верхний левый
+            new Vector2Int(0, -mapRadius),            // нижний левый
+            new Vector2Int(mapRadius, -mapRadius)     // нижний правый
+        };
+
+        for (int i = 0; i < corners.Length; i++)
+        {
+            bool foundCastleSpot = false;
+            for (int ring = 0; ring < mapRadius; ring++)
+            {
+                var ringTiles = GetTilesInRing(corners[i], ring);
+
+                foreach (var centerTile in ringTiles)
+                {
+                    if (Check2x2Pattern(centerTile))
+                    {
+                        ReplaceTilesWithCastle(centerTile);
+                        foundCastleSpot = true;
+                        break;
+                    }
+                }
+
+                if (foundCastleSpot) break;
+            }
+        }
+    }
+
+    // ПРОВЕРКА ПРОСТРАНСТВА ДЛЯ ЗАМКОВ
+    private bool Check2x2Pattern(Vector2Int center)
+    {
+        Vector2Int[] pattern = new Vector2Int[]
+        {
+            new Vector2Int(center.x, center.y),
+            new Vector2Int(center.x + 1, center.y),
+            new Vector2Int(center.x, center.y + 1),
+            new Vector2Int(center.x + 1, center.y + 1)
+        };
+
+        foreach (Vector2Int pos in pattern)
+        {
+            if (!hexGrid.ContainsKey(pos) || hexGrid[pos].Type != TileType.Plain)
+                return false;
+        }
+
+        return true;
+    }
+
+    // АЛГОРИТМ КОЛЬЦА
+    private List<Vector2Int> GetTilesInRing(Vector2Int center, int ring)
+    {
+        List<Vector2Int> ringTiles = new List<Vector2Int>();
+
+        foreach (Vector2Int pos in hexGrid.Keys)
+        {
+            int distance = HexDistance(center, pos);
+            if (distance == ring)
+            {
+                ringTiles.Add(pos);
+            }
+        }
+
+        return ringTiles;
+    }
+
+    private int HexDistance(Vector2Int a, Vector2Int b)
+    {
+        int dq = Mathf.Abs(a.x - b.x);
+        int dr = Mathf.Abs(a.y - b.y);
+        int ds = Mathf.Abs((-a.x - a.y) - (-b.x - b.y));
+
+        return Mathf.Max(dq, dr, ds);
+    }
+
+    // ЗАМЕНА ТАЙЛОВ
+    private void ReplaceTilesWithCastle(Vector2Int center)
+    {
+        Vector2Int[] pattern = new Vector2Int[]
+        {
+            new Vector2Int(center.x, center.y),
+            new Vector2Int(center.x + 1, center.y),
+            new Vector2Int(center.x, center.y + 1),
+            new Vector2Int(center.x + 1, center.y + 1)
+        };
+
+        hexGrid[pattern[0]].Type = TileType.Castle1;
+        hexGrid[pattern[1]].Type = TileType.Castle2;
+        hexGrid[pattern[2]].Type = TileType.Castle3;
+        hexGrid[pattern[3]].Type = TileType.Castle4;
+    }
+
     private void VisualizeTiles()
     {
         // Удаляем старые тайлы
@@ -140,14 +247,19 @@ public class HexagonalMap : MonoBehaviour
         switch (type)
         {
             case TileType.Water:
-                int randomIndex_1 = UnityEngine.Random.Range(0, 3);
-                return waterTilePrefabs[randomIndex_1];
+                return waterTilePrefabs[UnityEngine.Random.Range(0, waterTilePrefabs.Length)];
             case TileType.Plain:
-                int randomIndex_2 = UnityEngine.Random.Range(0, 3);
-                return plainTilePrefabs[randomIndex_2];
+                return plainTilePrefabs[UnityEngine.Random.Range(0, plainTilePrefabs.Length)];
             case TileType.Mountain:
-                int randomIndex_3 = UnityEngine.Random.Range(0, 3);
-                return mountainTilePrefabs[randomIndex_3];
+                return mountainTilePrefabs[UnityEngine.Random.Range(0, mountainTilePrefabs.Length)];
+            case TileType.Castle1:
+                return castle_1_TilePrefabs[UnityEngine.Random.Range(0, castle_1_TilePrefabs.Length)];
+            case TileType.Castle2:
+                return castle_2_TilePrefabs[UnityEngine.Random.Range(0, castle_2_TilePrefabs.Length)];
+            case TileType.Castle3:
+                return castle_3_TilePrefabs[UnityEngine.Random.Range(0, castle_3_TilePrefabs.Length)];
+            case TileType.Castle4:
+                return castle_4_TilePrefabs[UnityEngine.Random.Range(0, castle_4_TilePrefabs.Length)];
             default:
                 return plainTilePrefabs[0];
         }
