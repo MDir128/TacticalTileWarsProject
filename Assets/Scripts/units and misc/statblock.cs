@@ -13,10 +13,12 @@ public class statblock
     public float speed = 0.5f;
 
     private int squadId;
+    /*
     public statblock(int squadId)
     {
         this.squadId = squadId;
     }
+    */
 }
 
 public enum modifierType // я сам в шоке что так по умному пишу, не спрашивайте
@@ -38,7 +40,7 @@ public class squadModifier //я все это затеял просто пото
     } 
 }
 
-
+/*
 public class squadManager : MonoBehaviour
 {
     public static squadManager instantce;
@@ -63,7 +65,7 @@ public class squadManager : MonoBehaviour
     }
     void StatCheck() //@! У тебя уже есть один Update, может обьединить или это не облегчит код?
     {
-        foreach (list<squadModifier> modifierList in modifier.Value)
+        foreach (list<squadModifier> modifierList in modifier.Value) 
     }
 
 }
@@ -72,4 +74,4 @@ public list<squadModifier> getModifiers(int squadId)
 {
     return squadModifier[squadId];
 }
-
+*/

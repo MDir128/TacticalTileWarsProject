@@ -30,7 +30,7 @@ public class squadcontrol : MonoBehaviour
     {
         squadId = nextSquadId;
         nextSquadId++; //Теперь отряды нумерованны, ну что за антиутопия!
-        squadModifier[squadId] = new list<squadModifier>()
+        //squadModifier[squadId] = new list<squadModifier>()
 
         units = new GameObject[squad_size];
         for (int i = 0; i < units.Length; i++) {
