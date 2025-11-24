@@ -14,7 +14,7 @@ public class Commander_Rules : MonoBehaviour
     [Header("Commander stats")]
     [SerializeField] private float CommanderSquadDistance = 3f; //дистанция между командиром и отрядом при движении
     [SerializeField] private float CommanderSpeed = 5f; //скорость командира
-    [SerializeField] private float SafeBattleDistance = 1.5f; //безопасное расстояние между командиром и полем боя
+    [SerializeField] private float SafeBattleDistanceSmallerThan3 = 2.5f; //безопасное расстояние между командиром и полем боя
     private Coroutine AttackCoroutine; //ссылка на текущую корутину атаки на вражеский сквад
     private Camera scene_camera;
     private Mouse player_mouse; //создание объекта для курсора мыши игрока
@@ -89,11 +89,11 @@ public class Commander_Rules : MonoBehaviour
                 Vector3 commander_position = our_squad.transform.position - direction * CommanderSquadDistance; //перемещение командира за своей группой
                 transform.position = Vector3.MoveTowards(transform.position, commander_position, CommanderSpeed * Time.deltaTime);
             }
-            else if (commander_distance > SafeBattleDistance) //если командир слишком далеко от отряда 
+            else if (commander_distance > SafeBattleDistanceSmallerThan3) //если командир слишком далеко от отряда 
             {
                 Vector3 safe_position = our_squad.transform.position;
                 Vector3 direction_to_squad = (our_squad.transform.position - transform.position).normalized;
-                safe_position -= direction_to_squad * SafeBattleDistance;
+                safe_position -= direction_to_squad * SafeBattleDistanceSmallerThan3;
                 transform.position = Vector3.MoveTowards(transform.position, safe_position, CommanderSpeed * Time.deltaTime);
             }
             else
