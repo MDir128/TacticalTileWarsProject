@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using UnityEngine;
 public class squadcontrol : MonoBehaviour
 {
@@ -33,14 +33,18 @@ public class squadcontrol : MonoBehaviour
         }
         
         SetPositions();
-        SetEnemySquad(null);
-        //SetAnemySquad(basedEnemyName.GetComponent<squadcontrol>()); //так выставляется противник
+        //SetEnemySquad(null); вЂ” СѓР±СЂР°Р» СЃС‚СЂРѕС‡РєСѓ, РІРµРґСЊ squadcontrol Enemy РІ РјРѕРјРµРЅС‚ СЂР°Р±РѕС‚С‹ РїСЂРѕРіСЂР°РјРјС‹ СЃС‚Р°РЅРѕРІСЏС‚СЃСЏ null Рё РІС‹Р·С‹РІР°СЋС‚ РѕС€РёР±РєРё
+        //SetEnemySquad(basedEnemyName.GetComponent<squadcontrol>()); //С‚Р°Рє РІС‹СЃС‚Р°РІР»СЏРµС‚СЃСЏ РїСЂРѕС‚РёРІРЅРёРє
     }
     private void FixedUpdate()
     {
         if (basedEnemyName != null)
         {
-            SetEnemySquad(basedEnemyName.GetComponent<squadcontrol>());
+            squadcontrol EnemySquadComponent = basedEnemyName.GetComponent<squadcontrol>(); //СЃРЅР°С‡Р°Р»Р° РІС‹РЅРѕС€Сѓ РІ РѕС‚РґРµР»СЊРЅСѓСЋ РїРµСЂРµРјРµРЅРЅСѓСЋ
+            if (EnemySquadComponent != null) //РїРѕС‚РѕРј РїСЂРѕРІРµСЂСЏСЋ РµС‘
+            {
+                SetEnemySquad(EnemySquadComponent); //Рё С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ СЌС‚РѕРіРѕ РѕРЅР° СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ
+            }
         }
     }
     public void UpdateOverallHealth()
@@ -54,20 +58,23 @@ public class squadcontrol : MonoBehaviour
             }
         }
         overallhealth = health_sum;
-    } // эта функция обновляет поле общего здоровья отряда
+    } // СЌС‚Р° С„СѓРЅРєС†РёСЏ РѕР±РЅРѕРІР»СЏРµС‚ РїРѕР»Рµ РѕР±С‰РµРіРѕ Р·РґРѕСЂРѕРІСЊСЏ РѕС‚СЂСЏРґР°
     public void SetEnemySquad(squadcontrol Enemy)
     {
-        if (Enemy != null) { 
+        if (Enemy != null && units != null) { 
         string enemy_name =Enemy.our_teamname + Enemy.this_squadname;
         for (int i = 0; i < units.Length; i++)
         {
                 if (units[i] != null)
                 {
                     uniticontrol uniticontrol = units[i].GetComponentInChildren<uniticontrol>();
-                    uniticontrol.anemy_squadname = enemy_name;
+                    if (uniticontrol != null) //РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РїСЂРѕРІРµСЂРєР°
+                    {
+                        uniticontrol.enemy_squadname = enemy_name;
+                    }
                 }
         }}
-    } //эта функция определяет сквад противника под атаку
+    } //СЌС‚Р° С„СѓРЅРєС†РёСЏ РѕРїСЂРµРґРµР»СЏРµС‚ СЃРєРІР°Рґ РїСЂРѕС‚РёРІРЅРёРєР° РїРѕРґ Р°С‚Р°РєСѓ
     public void SetPositions()
     {
         Unit_formation formation = new Unit_formation(new SkirmishGen());
@@ -78,18 +85,18 @@ public class squadcontrol : MonoBehaviour
                 units[i].transform.position = positions[i];
             }
         }
-    } // Эта функция обновляет построение отряда, переставляя целевые позиции юнитов по активному генератору позиций (в данном случае - рассыпной)
+    } // Р­С‚Р° С„СѓРЅРєС†РёСЏ РѕР±РЅРѕРІР»СЏРµС‚ РїРѕСЃС‚СЂРѕРµРЅРёРµ РѕС‚СЂСЏРґР°, РїРµСЂРµСЃС‚Р°РІР»СЏСЏ С†РµР»РµРІС‹Рµ РїРѕР·РёС†РёРё СЋРЅРёС‚РѕРІ РїРѕ Р°РєС‚РёРІРЅРѕРјСѓ РіРµРЅРµСЂР°С‚РѕСЂСѓ РїРѕР·РёС†РёР№ (РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ - СЂР°СЃСЃС‹РїРЅРѕР№)
     public void Gotopoint_global(Vector3 point)
     {
         transform.position = Vector3.MoveTowards(
             transform.position, point, squadstats.speed * Time.deltaTime
             );
-    } // перемещение по глобальным координатам. *Нужно будет переработать, чтобы двигать юнитов по тодельности, а не весь сет.
-      // Скорее всего, нужно будет в мозгах юнита убрать родительский префаб, сделав самостоятельным объектом и включать им функцию возращения на позицию. Но это потом.
+    } // РїРµСЂРµРјРµС‰РµРЅРёРµ РїРѕ РіР»РѕР±Р°Р»СЊРЅС‹Рј РєРѕРѕСЂРґРёРЅР°С‚Р°Рј. *РќСѓР¶РЅРѕ Р±СѓРґРµС‚ РїРµСЂРµСЂР°Р±РѕС‚Р°С‚СЊ, С‡С‚РѕР±С‹ РґРІРёРіР°С‚СЊ СЋРЅРёС‚РѕРІ РїРѕ С‚РѕРґРµР»СЊРЅРѕСЃС‚Рё, Р° РЅРµ РІРµСЃСЊ СЃРµС‚.
+      // РЎРєРѕСЂРµРµ РІСЃРµРіРѕ, РЅСѓР¶РЅРѕ Р±СѓРґРµС‚ РІ РјРѕР·РіР°С… СЋРЅРёС‚Р° СѓР±СЂР°С‚СЊ СЂРѕРґРёС‚РµР»СЊСЃРєРёР№ РїСЂРµС„Р°Р±, СЃРґРµР»Р°РІ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅС‹Рј РѕР±СЉРµРєС‚РѕРј Рё РІРєР»СЋС‡Р°С‚СЊ РёРј С„СѓРЅРєС†РёСЋ РІРѕР·СЂР°С‰РµРЅРёСЏ РЅР° РїРѕР·РёС†РёСЋ. РќРѕ СЌС‚Рѕ РїРѕС‚РѕРј.
     public void Gotopoint_local()
     {
 
-    } // заглушка = должно по идее заставлять отряд двигаться к координатам, относительно командира
+    } // Р·Р°РіР»СѓС€РєР° = РґРѕР»Р¶РЅРѕ РїРѕ РёРґРµРµ Р·Р°СЃС‚Р°РІР»СЏС‚СЊ РѕС‚СЂСЏРґ РґРІРёРіР°С‚СЊСЃСЏ Рє РєРѕРѕСЂРґРёРЅР°С‚Р°Рј, РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РєРѕРјР°РЅРґРёСЂР°
     public statblock GetEnemyStats_statblock(squadcontrol Enemy)
     {
         return Enemy.squadstats;
