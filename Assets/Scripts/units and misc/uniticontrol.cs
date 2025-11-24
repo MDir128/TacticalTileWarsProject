@@ -8,11 +8,11 @@ public class uniticontrol : MonoBehaviour
 {
     [Header("options")]
     [SerializeField] public statblock statblock = null;
-    [SerializeField] public string anemy_squadname;
+    [SerializeField] public string enemy_squadname;
     [SerializeField] public string my_squadname;
     [SerializeField] public string my_teamname;
     [SerializeField] public float recharge;
-    [SerializeField] public uniticontrol targetted_enamy;
+    [SerializeField] public uniticontrol targetted_enemy;
     [SerializeField] public GameObject my_position;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -21,16 +21,16 @@ public class uniticontrol : MonoBehaviour
     {
         enamiescache = new Dictionary<GameObject , uniticontrol>();
         if (statblock == null) {statblock = new statblock();}
-        targetted_enamy = null;
+        targetted_enemy = null;
         recharge = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (targetted_enamy != null)
+        if (targetted_enemy != null)
         {
-            if (Vector3.Distance(transform.position, targetted_enamy.transform.position) < statblock.walkrange);
+            if (Vector3.Distance(transform.position, targetted_enemy.transform.position) < statblock.walkrange);
             MoveToTarget();
         }
         else
@@ -55,18 +55,18 @@ public class uniticontrol : MonoBehaviour
     {
         float findrange = math.max(statblock.walkrange, statblock.atackrange);
         float clothest = findrange + 10;
-        targetted_enamy = null;
-        Collider2D[] possible_anemy = Physics2D.OverlapCircleAll(transform.position, findrange);
-        foreach (Collider2D collider in possible_anemy)
+        targetted_enemy = null;
+        Collider2D[] possible_enemy = Physics2D.OverlapCircleAll(transform.position, findrange);
+        foreach (Collider2D collider in possible_enemy)
         {
             uniticontrol unit = GetUnitscript(collider.gameObject);
-            if (unit != null && unit.my_squadname == anemy_squadname)
+            if (unit != null && unit.my_squadname == enemy_squadname)
             {
                 float distance = Vector3.Distance(transform.position, collider.transform.position);
                 if (distance < clothest)
                 {
                     clothest = distance;
-                    targetted_enamy = unit;
+                    targetted_enemy = unit;
                 }
             }
         }
@@ -100,12 +100,12 @@ public class uniticontrol : MonoBehaviour
     }
     void MoveToTarget()
     {
-        float distance = Vector3.Distance(transform.position, targetted_enamy.transform.position);
-        if (targetted_enamy != null && distance>= statblock.atackrange*0.8)
+        float distance = Vector3.Distance(transform.position, targetted_enemy.transform.position);
+        if (targetted_enemy != null && distance>= statblock.atackrange*0.8)
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,
-                targetted_enamy.transform.position,
+                targetted_enemy.transform.position,
                 statblock.speed * Time.deltaTime
                 );
         }
