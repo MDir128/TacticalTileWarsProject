@@ -1,0 +1,910 @@
+fileFormatVersion: 2
+guid: a0fcb8e3cd1a4bf4cb75bd75aeb480d9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1621182286160262934
+    second: commanders_and_units_0
+  - first:
+      213: 5587631318740030771
+    second: commanders_and_units_1
+  - first:
+      213: 4148023764991042623
+    second: commanders_and_units_2
+  - first:
+      213: -8396269320068945973
+    second: commanders_and_units_3
+  - first:
+      213: -3098657146736521901
+    second: commanders_and_units_4
+  - first:
+      213: -3606153239414694311
+    second: commanders_and_units_5
+  - first:
+      213: 6907477197813184634
+    second: commanders_and_units_6
+  - first:
+      213: 601267702749250116
+    second: commanders_and_units_7
+  - first:
+      213: 1013464309628003393
+    second: commanders_and_units_8
+  - first:
+      213: 93268706877955529
+    second: commanders_and_units_9
+  - first:
+      213: 4638187941627980064
+    second: commanders_and_units_10
+  - first:
+      213: 7500745868637383070
+    second: commanders_and_units_11
+  - first:
+      213: 6113658056108286151
+    second: commanders_and_units_12
+  - first:
+      213: 2971899412255718150
+    second: commanders_and_units_13
+  - first:
+      213: -1378729943105163264
+    second: commanders_and_units_14
+  - first:
+      213: -6809492587888629311
+    second: commanders_and_units_15
+  - first:
+      213: -4596165098028119586
+    second: commanders_and_units_16
+  - first:
+      213: -5316126241171969004
+    second: commanders_and_units_17
+  - first:
+      213: -2792899618922631990
+    second: commanders_and_units_18
+  - first:
+      213: 853452026029809084
+    second: commanders_and_units_19
+  - first:
+      213: -238153053979784798
+    second: commanders_and_units_20
+  - first:
+      213: 5973593500777314511
+    second: commanders_and_units_21
+  - first:
+      213: 580205114610769363
+    second: commanders_and_units_22
+  - first:
+      213: 982095712427931502
+    second: commanders_and_units_23
+  - first:
+      213: 5279271111670468968
+    second: commanders_and_units_24
+  - first:
+      213: -1813932777305688960
+    second: commanders_and_units_25
+  - first:
+      213: 4954942624077894669
+    second: commanders_and_units_26
+  - first:
+      213: -7983086725756420900
+    second: commanders_and_units_27
+  - first:
+      213: -2294725084215700925
+    second: commanders_and_units_28
+  - first:
+      213: -2334999942801257170
+    second: commanders_and_units_29
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: commanders_and_units_0
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1245
+        width: 191
+        height: 585
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 617fcba23b89f7610800000000000000
+      internalID: 1621182286160262934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_1
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 1245
+        width: 208
+        height: 580
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 335d85174114b8d40800000000000000
+      internalID: 5587631318740030771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_2
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 1223
+        width: 237
+        height: 556
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f346b2813adb09930800000000000000
+      internalID: 4148023764991042623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_3
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 1231
+        width: 241
+        height: 557
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc7a7cae9857a7b80800000000000000
+      internalID: -8396269320068945973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_4
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 1317
+        width: 212
+        height: 475
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35d4b001ebb5ff4d0800000000000000
+      internalID: -3098657146736521901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_5
+      rect:
+        serializedVersion: 2
+        x: 1494
+        y: 1361
+        width: 197
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95e10172cbe54fdc0800000000000000
+      internalID: -3606153239414694311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_6
+      rect:
+        serializedVersion: 2
+        x: 1723
+        y: 1384
+        width: 217
+        height: 313
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a78f3cdf9e94cdf50800000000000000
+      internalID: 6907477197813184634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_7
+      rect:
+        serializedVersion: 2
+        x: 2259
+        y: 1426
+        width: 238
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 442c84d3ac1285800800000000000000
+      internalID: 601267702749250116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 662
+        width: 256
+        height: 582
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 144e9e78b6c801e00800000000000000
+      internalID: 1013464309628003393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_9
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 657
+        width: 221
+        height: 589
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cdde1e056b5b4100800000000000000
+      internalID: 93268706877955529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_10
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 646
+        width: 189
+        height: 547
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0296c36db572e5040800000000000000
+      internalID: 4638187941627980064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_11
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 641
+        width: 193
+        height: 547
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e992c9a70a0081860800000000000000
+      internalID: 7500745868637383070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_12
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 663
+        width: 192
+        height: 546
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c02a884c9318d450800000000000000
+      internalID: 6113658056108286151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_13
+      rect:
+        serializedVersion: 2
+        x: 1492
+        y: 692
+        width: 190
+        height: 566
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60bb1b705ce4e3920800000000000000
+      internalID: 2971899412255718150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_14
+      rect:
+        serializedVersion: 2
+        x: 1742
+        y: 712
+        width: 189
+        height: 543
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 000b50ceb64cddce0800000000000000
+      internalID: -1378729943105163264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_15
+      rect:
+        serializedVersion: 2
+        x: 2084
+        y: 986
+        width: 181
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c92e3ec192df71a0800000000000000
+      internalID: -6809492587888629311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_16
+      rect:
+        serializedVersion: 2
+        x: 2274
+        y: 989
+        width: 181
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed94cf2e1342730c0800000000000000
+      internalID: -4596165098028119586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_17
+      rect:
+        serializedVersion: 2
+        x: 2477
+        y: 985
+        width: 181
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41cefc589535936b0800000000000000
+      internalID: -5316126241171969004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_18
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 661
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acceac01890ad39d0800000000000000
+      internalID: -2792899618922631990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_19
+      rect:
+        serializedVersion: 2
+        x: 1442
+        y: 38
+        width: 226
+        height: 638
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbd185c881218db00800000000000000
+      internalID: 853452026029809084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_20
+      rect:
+        serializedVersion: 2
+        x: 2091
+        y: 574
+        width: 181
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a94c572f09e1bcf0800000000000000
+      internalID: -238153053979784798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_21
+      rect:
+        serializedVersion: 2
+        x: 2281
+        y: 577
+        width: 181
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc8f966b3a776e250800000000000000
+      internalID: 5973593500777314511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_22
+      rect:
+        serializedVersion: 2
+        x: 2484
+        y: 573
+        width: 181
+        height: 397
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dd5d394a7d4d0800800000000000000
+      internalID: 580205114610769363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 41
+        width: 243
+        height: 543
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6773bad8da11ad00800000000000000
+      internalID: 982095712427931502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_24
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 48
+        width: 247
+        height: 543
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8619914fa1db34940800000000000000
+      internalID: 5279271111670468968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_25
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 56
+        width: 228
+        height: 573
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 084b14aefbd93d6e0800000000000000
+      internalID: -1813932777305688960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_26
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 43
+        width: 228
+        height: 577
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d04da9e601e73c440800000000000000
+      internalID: 4954942624077894669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_27
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 54
+        width: 244
+        height: 598
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdcf62c4be0663190800000000000000
+      internalID: -7983086725756420900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_28
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 44
+        width: 274
+        height: 587
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3421522a1bf7720e0800000000000000
+      internalID: -2294725084215700925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: commanders_and_units_29
+      rect:
+        serializedVersion: 2
+        x: 2367
+        y: 14
+        width: 190
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2d06c26ce9689fd0800000000000000
+      internalID: -2334999942801257170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      commanders_and_units_0: 1621182286160262934
+      commanders_and_units_1: 5587631318740030771
+      commanders_and_units_10: 4638187941627980064
+      commanders_and_units_11: 7500745868637383070
+      commanders_and_units_12: 6113658056108286151
+      commanders_and_units_13: 2971899412255718150
+      commanders_and_units_14: -1378729943105163264
+      commanders_and_units_15: -6809492587888629311
+      commanders_and_units_16: -4596165098028119586
+      commanders_and_units_17: -5316126241171969004
+      commanders_and_units_18: -2792899618922631990
+      commanders_and_units_19: 853452026029809084
+      commanders_and_units_2: 4148023764991042623
+      commanders_and_units_20: -238153053979784798
+      commanders_and_units_21: 5973593500777314511
+      commanders_and_units_22: 580205114610769363
+      commanders_and_units_23: 982095712427931502
+      commanders_and_units_24: 5279271111670468968
+      commanders_and_units_25: -1813932777305688960
+      commanders_and_units_26: 4954942624077894669
+      commanders_and_units_27: -7983086725756420900
+      commanders_and_units_28: -2294725084215700925
+      commanders_and_units_29: -2334999942801257170
+      commanders_and_units_3: -8396269320068945973
+      commanders_and_units_4: -3098657146736521901
+      commanders_and_units_5: -3606153239414694311
+      commanders_and_units_6: 6907477197813184634
+      commanders_and_units_7: 601267702749250116
+      commanders_and_units_8: 1013464309628003393
+      commanders_and_units_9: 93268706877955529
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
