@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2858170939886463911, guid: 85e00576ae4086a429b0ded0406c851c, type: 3}
+  m_Sprite: {fileID: -2334999942801257170, guid: a0fcb8e3cd1a4bf4cb75bd75aeb480d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,11 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4b33bbc65dbf946b1f52170b9dd390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::uniticontrol
-  anemy_squadname: 
+  enemy_squadname: 
   my_squadname: 
   my_teamname: 
   recharge: 0
-  targetted_enamy: {fileID: 0}
+  targetted_enemy: {fileID: 0}
   my_position: {fileID: 9160748928996092325}
 --- !u!61 &6997804490444202156
 BoxCollider2D:
@@ -149,7 +149,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.66015625, y: 1.8828125}
+    oldSize: {x: 1.3768115, y: 3.942531}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
