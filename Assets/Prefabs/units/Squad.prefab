@@ -108,6 +108,7 @@ MonoBehaviour:
   our_teamname: 
   this_squadname: 
   squad_size: 21
+  overallhealth: 0
   damage: 2
   atackdelay: 1
   health: 10
@@ -134,4 +135,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   unit_prefab: {fileID: 9160748928996092325, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
+  basedEnemyName: {fileID: 0}
+  squadcolor: {r: 0, g: 0, b: 0, a: 1}
   speed: 0.5
+  squadId: 0
