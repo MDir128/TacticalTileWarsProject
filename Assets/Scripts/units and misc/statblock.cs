@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class statblock
 {
+    public string unit_type = "melee";
+
     public float atackrange = 1.5f;
     public float walkrange = 3f; // walkspeed xd
 

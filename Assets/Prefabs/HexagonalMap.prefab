@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6910245454031836580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2635242351331791621}
+  - component: {fileID: 4018984089749864853}
+  m_Layer: 0
+  m_Name: HexagonalMap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2635242351331791621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6910245454031836580}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4018984089749864853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6910245454031836580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df1bba62941a45c479f508ca22757d28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HexagonalMap
+  mapRadius: 10
+  hexSize: 1
+  noiseScale: 0.123
+  waterThreshold: 0.3
+  mountainThreshold: 0.7
+  noiseOffset: {x: 150, y: 120}
+  waterTilePrefabs:
+  - {fileID: 1627139134767463969, guid: c22b257e2c1ffd84cb3071a795138f85, type: 3}
+  - {fileID: 1174580737721358515, guid: b69f9b6d0436f7845be051b9403a1a46, type: 3}
+  - {fileID: 6658624669049810308, guid: 94799de06aa43f7448d6d49c95c21197, type: 3}
+  plainTilePrefabs:
+  - {fileID: 703755486001411536, guid: 0d84ede865986ca4a9b165f356960ead, type: 3}
+  - {fileID: 3083074905161121979, guid: c0ffc8d35e075df4aa4ed42fc516fefb, type: 3}
+  - {fileID: 7017147818076625579, guid: 44f62c18c4c236642b097462f5d24c8d, type: 3}
+  mountainTilePrefabs:
+  - {fileID: 1508592074282850828, guid: 3aa1ed1e4d34ce246819108601c308c3, type: 3}
+  - {fileID: 7941380190695276163, guid: 24a9f1d446807a145a946959f7b2fee1, type: 3}
+  - {fileID: 6492193727855557342, guid: ae2bfc43f5de69643a63e7c4dcd139ef, type: 3}
+  castle_1_TilePrefabs:
+  - {fileID: 7049428248939326011, guid: 3e514c509b9f16442bf051bb83440eac, type: 3}
+  - {fileID: 392100668415482697, guid: 6a469d21004ab3b47beec1a14e77b791, type: 3}
+  castle_2_TilePrefabs:
+  - {fileID: 2620833902109503820, guid: 55a76e402758c5549a9b631aed7ba5ba, type: 3}
+  - {fileID: 2690528475681692032, guid: e45e07f869c4b5a43bbe5cea1d04f917, type: 3}
+  castle_3_TilePrefabs:
+  - {fileID: 1072174516082490877, guid: 9a901cf2ad0e7bc4c8ec99f2bb090bcb, type: 3}
+  - {fileID: 1640395588532662286, guid: 67a2414a20e28d8488d67f89ffc6812a, type: 3}
+  castle_4_TilePrefabs:
+  - {fileID: 1022622728607535257, guid: 0d8d1fc7fa8297b488dc947508b84617, type: 3}
+  - {fileID: 8621714384489123375, guid: f78134daf2987204ea70da2317b7e70e, type: 3}
