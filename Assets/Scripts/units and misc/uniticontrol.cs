@@ -19,6 +19,10 @@ public class uniticontrol : MonoBehaviour
     private Dictionary<GameObject , uniticontrol> enamiescache;
     void Start()
     {
+
+        // Dictionary<string, int> SquadModifiers = new Dictionary<string, List<int>>();
+        // SquadModifiers.add(my_squadname); // Cписок из всех команд и их имен
+
         enamiescache = new Dictionary<GameObject , uniticontrol>();
         if (statblock == null) {statblock = new statblock();}
         targetted_enemy = null;
