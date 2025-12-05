@@ -6,12 +6,16 @@ public class manager : MonoBehaviour
     [Header("prefabs")]
     [SerializeField] GameObject mappref;
     [SerializeField] GameObject commander;
-    [SerializeField] GameObject[] commandersfirst;
-    [SerializeField] GameObject[] commanderssecond;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    [Header("entities")]
+    [SerializeField] private HexagonalMap map;
+    [SerializeField] private GameObject[] commandersfirst;
+    [SerializeField] private GameObject[] commanderssecond;
     void Start()
     {
-        GameObject map = Instantiate(mappref, transform);
+        map = Instantiate(mappref, transform).GetComponent<HexagonalMap>();
+        //Vector2 initialpositions = 
         for (int i = 0; i < commandersfirst.Length; i++)
         {
             commandersfirst[i] = Instantiate(commander, transform);
