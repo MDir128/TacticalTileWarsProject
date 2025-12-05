@@ -8,10 +8,12 @@ public class EnemyCommander : MonoBehaviour
 {
     [Header("Enemy AI Commander Stats")]
     [SerializeField] public string TeamName = "Enemy";
+    [SerializeField] public string MyName = "John";
     [SerializeField] private float OurEnemyCommanderHealth = 20f;
     [SerializeField] private float DecisionsIntervalTime = 3f; //логика продолжительности отрезков времени между принятиями решений (атаковать, отступать) в секундах
     [Header("Enemy squads settings")]
     [SerializeField] private squadcontrol[] OurEnemySquads = new squadcontrol[3]; //массив отрядов (ближний бой, дальнобойные и конницы)
+    [SerializeField] public GameObject unitprefab;
     [Header("Other settings")]
     private string Behavior = "Attack"; //модель поведения 
     private Commander_Rules PlayerCommander; //ссылка на командира игрока
@@ -21,6 +23,12 @@ public class EnemyCommander : MonoBehaviour
     {
         PlayerCommander = FindFirstObjectByType<Commander_Rules>(); //нахождение и определение первого объекта типа командира (командира игрока)
         CheckingSquadsAssignment();
+        var t = gameObject.AddComponent<commander>();
+        t.Init(TeamName, MyName, new GameObject[3], unitprefab);
+        for (int i = 0; i < 3; i++)
+        {
+            OurEnemySquads[i] = t.squads[i].GetComponent<squadcontrol>();
+        }
     }
 
     void Update()

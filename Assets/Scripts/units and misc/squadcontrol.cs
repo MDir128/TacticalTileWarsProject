@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class squadcontrol : MonoBehaviour
 {
@@ -8,14 +9,14 @@ public class squadcontrol : MonoBehaviour
     [SerializeField] public float walkrange = 3f;
     [SerializeField] public string our_teamname;
     [SerializeField] public string this_squadname;
-    [SerializeField] public int squad_size;
+    [SerializeField] public int squad_size = 21;
     [SerializeField] public float overallhealth;
 
     [SerializeField] public float damage = 2f;
     [SerializeField] public float attackdelay = 1f;
     [SerializeField] public float health = 10f;
     [Header("misc")]
-    [SerializeField] public GameObject[] units;
+    [SerializeField] public GameObject[] units = new GameObject[21];
     [SerializeField] public GameObject unit_prefab;
     [SerializeField] public GameObject basedEnemyName;
     [SerializeField] public Color squadcolor;
@@ -24,33 +25,41 @@ public class squadcontrol : MonoBehaviour
 
     public int squadId;  //для того чтобы я находил того кто получил модификации
     private static int nextSquadId =1;
-
-    void Start() 
-    // Создания юнитов
+    public void Init(string our_teamname, string this_squadname)
     {
-        if (squadstats == null)
+        this.our_teamname = our_teamname;
+        this.this_squadname = this_squadname;
+        // Создания юнитов
         {
-            squadstats = new statblock();
-        }
+            if (squadstats == null)
+            {
+                squadstats = new statblock();
+            }
 
-        squadId = nextSquadId;
-        nextSquadId++; //Теперь отряды нумерованны, ну что за антиутопия!
-        //squadModifier[squadId] = new list<squadModifier>()
+            squadId = nextSquadId;
+            nextSquadId++; //Теперь отряды нумерованны, ну что за антиутопия!
+                           //squadModifier[squadId] = new list<squadModifier>()
 
-        units = new GameObject[squad_size];
-        for (int i = 0; i < units.Length; i++) {
-            units[i] = Instantiate(unit_prefab, transform);
-            uniticontrol uniticontrol = units[i].GetComponentInChildren<uniticontrol>();
-            uniticontrol.my_squadname = our_teamname + this_squadname;
-            uniticontrol.my_teamname = our_teamname;
-            SpriteRenderer renderer = units[i].GetComponentInChildren<SpriteRenderer>();
-            renderer.color = squadcolor;
+            units = new GameObject[squad_size];
+            for (int i = 0; i < units.Length; i++)
+            {
+                units[i] = Instantiate(unit_prefab, transform);
+                uniticontrol uniticontrol = units[i].GetComponentInChildren<uniticontrol>();
+                uniticontrol.my_squadname = our_teamname + this_squadname;
+                uniticontrol.my_teamname = our_teamname;
+                SpriteRenderer renderer = units[i].GetComponentInChildren<SpriteRenderer>();
+                renderer.color = squadcolor;
+            }
+
+            SetPositions();
+            UpdateOverallHealth();
+            //SetEnemySquad(null); — убрал строчку, ведь squadcontrol Enemy в момент работы программы становятся null и вызывают ошибки
+            //SetEnemySquad(basedEnemyName.GetComponent<squadcontrol>()); //так выставляется противник
         }
-        
-        SetPositions();
-        UpdateOverallHealth();
-        //SetEnemySquad(null); — убрал строчку, ведь squadcontrol Enemy в момент работы программы становятся null и вызывают ошибки
-        //SetEnemySquad(basedEnemyName.GetComponent<squadcontrol>()); //так выставляется противник
+    }
+    void Start()
+    {
+
     }
     private void FixedUpdate()
     {
@@ -99,7 +108,7 @@ public class squadcontrol : MonoBehaviour
     public void SetPositions()
     {
         Unit_formation formation = new Unit_formation(new SkirmishGen());
-        Vector3[] positions = formation.Genarate_formation(squad_size, transform.position, 3f);
+        Vector3[] positions = formation.Genarate_formation(squad_size, transform.position, 3f, new Vector3());
         for (int i = 0; i < units.Length; i++) {
             if (units[i] != null)
             {

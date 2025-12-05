@@ -6,20 +6,36 @@ public class commander : MonoBehaviour
     [SerializeField] public string our_teamname;
     [SerializeField] public string my_name;
     [SerializeField] public GameObject[] squads;
+    [SerializeField] public GameObject unitprefab;
+    public void Init(string our_teamname, string my_name, GameObject[] squads, GameObject unitpref)
+    {
+        this.our_teamname = our_teamname;
+        this.my_name = my_name;
+        this.squads = squads;
+        this.unitprefab = unitpref;
+        for (int i = 0; i < squads.Length; i++)
+        {
+            GameObject generic_prefab = new GameObject();
+            squadcontrol sqctr = generic_prefab.AddComponent<squadcontrol>();
+            if (our_teamname == "Blue")
+            {
+                sqctr.squadcolor = new Color(78f/255f, 82f/255f, 185f/255f);
+            }
+            else if (our_teamname == "Red")
+            {
+                sqctr.squadcolor = new Color(161f/255f, 39f/255f, 39f/255f);
+            }
+            sqctr.unit_prefab = unitprefab;
+            squads[i] = Instantiate(generic_prefab,  transform);
+            sqctr.Init(our_teamname, my_name+i);
+        }
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        for (int i = 0; i<squads.Length;i++) {
-            GameObject generic_prefab = new GameObject();
-            squadcontrol sqctr = generic_prefab.AddComponent<squadcontrol>();
-            if (our_teamname == "Blue") {
-                sqctr.squadcolor = new Color(0, 0, 255); }
-            else if (our_teamname == "Blue")
-            {
-                sqctr.squadcolor = new Color(255, 0, 0);
-            }
-            squads[i] = Instantiate(generic_prefab);
-        }
+        
+        
     }
 
     // Update is called once per frame

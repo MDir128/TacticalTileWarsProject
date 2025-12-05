@@ -4,11 +4,11 @@ using System;
 
 public interface IFormatSet
 {
-    Vector3[] GenFormatSet(int unitcount, Vector3 center, float spacing);
+    Vector3[] GenFormatSet(int unitcount, Vector3 center, float spacing, Vector3 direction);
 }
 public class SkirmishGen: IFormatSet
 {
-    public Vector3[] GenFormatSet(int unitcount, Vector3 center, float spacing)
+    public Vector3[] GenFormatSet(int unitcount, Vector3 center, float spacing, Vector3 direction)
     {
         Vector3[] positions = new Vector3[unitcount];
         System.Random rand = new System.Random();
@@ -21,11 +21,28 @@ public class SkirmishGen: IFormatSet
         return positions;
     }
 }
+public class SemiRoundGen : IFormatSet {
+    public Vector3[] GenFormatSet(int unitcount, Vector3 center, float spacing, Vector3 direction)
+    {
+        Vector3[] positions = new Vector3[unitcount];
+
+        return positions;
+    }
+}
+public class RoundGen : IFormatSet
+{
+    public Vector3[] GenFormatSet(int unitcount, Vector3 center, float spacing, Vector3 direction)
+    {
+        Vector3[] positions = new Vector3[unitcount];
+
+        return positions;
+    }
+}
 
 public class Unit_formation
 {
     private IFormatSet _format;
     public Unit_formation(IFormatSet format) { _format = format; }
     public void Set_Unit_formation(IFormatSet format) { _format = format; }
-    public Vector3[] Genarate_formation(int unitcount, Vector3 center, float spacing) { return _format.GenFormatSet(unitcount, center, spacing); }
+    public Vector3[] Genarate_formation(int unitcount, Vector3 center, float spacing, Vector3 direction) { return _format.GenFormatSet(unitcount, center, spacing, direction); }
 }

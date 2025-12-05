@@ -19,10 +19,10 @@ public class manager : MonoBehaviour
             param.our_teamname = "Red";
             param.my_name = Convert.ToString(i) + "playerRed";
         }
-        for (int i = 0; i < commandersfirst.Length; i++)
+        for (int i = 0; i < commanderssecond.Length; i++)
         {
             commandersfirst[i] = Instantiate(commander, transform);
-            commander param = commandersfirst[i].GetComponent<commander>();
+            commander param = commanderssecond[i].GetComponent<commander>();
             param.our_teamname = "Blue";
             param.my_name = Convert.ToString(i) + "playerBlue";
         }
