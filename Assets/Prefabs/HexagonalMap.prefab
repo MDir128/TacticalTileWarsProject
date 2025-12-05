@@ -51,9 +51,9 @@ MonoBehaviour:
   mountainThreshold: 0.7
   noiseOffset: {x: 150, y: 120}
   waterTilePrefabs:
-  - {fileID: 1627139134767463969, guid: c22b257e2c1ffd84cb3071a795138f85, type: 3}
-  - {fileID: 1174580737721358515, guid: b69f9b6d0436f7845be051b9403a1a46, type: 3}
-  - {fileID: 6658624669049810308, guid: 94799de06aa43f7448d6d49c95c21197, type: 3}
+  - {fileID: 6005406852786321401, guid: 84c76afd0e75a5c4896cc461001fbed0, type: 3}
+  - {fileID: 829401609157523106, guid: beb0ce6d0f718bd49bda6cdab24e2cf9, type: 3}
+  - {fileID: 2673681349976545316, guid: 0fcb29218b9926e4fa09407f63e89f3c, type: 3}
   plainTilePrefabs:
   - {fileID: 703755486001411536, guid: 0d84ede865986ca4a9b165f356960ead, type: 3}
   - {fileID: 3083074905161121979, guid: c0ffc8d35e075df4aa4ed42fc516fefb, type: 3}
