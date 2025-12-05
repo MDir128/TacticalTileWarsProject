@@ -16,15 +16,33 @@ public class uniticontrol : MonoBehaviour
     [SerializeField] public GameObject my_position;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    private Dictionary<GameObject , uniticontrol> enamiescache;
+    private Dictionary<GameObject , uniticontrol> enemiescache;
     void Start()
     {
-
-        // Dictionary<string, int> SquadModifiers = new Dictionary<string, List<int>>();
-        // SquadModifiers.add(my_squadname); // C–ø–∏—Å–æ–∫ –∏–∑ –≤—Å–µ—Ö –∫–æ–º–∞–Ω–¥ –∏ –∏—Ö –∏–º–µ–Ω
-
-        enamiescache = new Dictionary<GameObject , uniticontrol>();
+        enemiescache = new Dictionary<GameObject , uniticontrol>();
         if (statblock == null) {statblock = new statblock();}
+        //ÕŒ¬€…  ”—Œ   Œƒ¿ ó Õ¿—“–Œ… ¿ ƒÀﬂ –¿«Õ€’ “»œŒ¬ Œ“–ﬂƒ¿
+        if (statblock.unit_type == "melee")
+        {
+            statblock.attackrange = 1.5f;
+            statblock.damage = 2f;
+            statblock.health = 10f;
+            statblock.speed = 0.5f;
+        }
+        if (statblock.unit_type == "range")
+        {
+            statblock.attackrange = 5f;
+            statblock.damage = 1.5f;
+            statblock.health = 8f;
+            statblock.speed = 0.7f;
+        }
+        if (statblock.unit_type == "cavalry")
+        {
+            statblock.attackrange = 1.8f;
+            statblock.damage = 3f;
+            statblock.health = 15f;
+            statblock.speed = 1.2f;
+        }
         targetted_enemy = null;
         recharge = 0;
     }
@@ -34,7 +52,7 @@ public class uniticontrol : MonoBehaviour
     {
         if (targetted_enemy != null)
         {
-            if (Vector3.Distance(transform.position, targetted_enemy.transform.position) < statblock.walkrange);
+            if (Vector3.Distance(transform.position, targetted_enemy.transform.position) < statblock.walkrange)
             MoveToTarget();
         }
         else
@@ -46,7 +64,7 @@ public class uniticontrol : MonoBehaviour
             string output = Attack();
             if (output != "no")
             {
-                recharge = statblock.atackdelay;
+                recharge = statblock.attackdelay;
             }
         }
         else
@@ -57,7 +75,7 @@ public class uniticontrol : MonoBehaviour
 
     public void FindTarget()
     {
-        float findrange = math.max(statblock.walkrange, statblock.atackrange);
+        float findrange = math.max(statblock.walkrange, statblock.attackrange);
         float clothest = findrange + 10;
         targetted_enemy = null;
         Collider2D[] possible_enemy = Physics2D.OverlapCircleAll(transform.position, findrange);
@@ -78,15 +96,15 @@ public class uniticontrol : MonoBehaviour
     public string Attack()
     {
         uniticontrol targetted = null;
-        Collider2D[] hitpossible = Physics2D.OverlapCircleAll(transform.position, statblock.atackrange);
+        Collider2D[] hitpossible = Physics2D.OverlapCircleAll(transform.position, statblock.attackrange);
         foreach (Collider2D collider in hitpossible)
         {
             uniticontrol victim = GetUnitscript(collider.gameObject);
             if (victim != null && victim.my_teamname != my_teamname)
             {
-                float clothest = statblock.atackrange + 1;
+                float clothest = statblock.attackrange + 1;
                 float distance = Vector3.Distance(transform.position, victim.transform.position);
-                if (distance < clothest && distance<=statblock.atackrange)
+                if (distance < clothest && distance<=statblock.attackrange)
                 {
                     clothest = distance;
                     targetted = victim;
@@ -99,13 +117,23 @@ public class uniticontrol : MonoBehaviour
         }
         else
         {
+            //ƒŒ¡¿¬»À ¿“¿ ” Õ¿ ¬–¿∆≈— Œ√Œ  ŒÃ¿Õƒ»–¿ (≈Ÿ® Õ”∆ÕŒ ƒŒ¡¿¬»“‹ ¿“¿ ” Õ¿  ŒÃ¿Õƒ»–¿ »√–Œ ¿)
+            foreach (Collider2D collider in hitpossible)
+            {
+                EnemyCommander EnemyCommander = collider.GetComponent<EnemyCommander>();
+                if (EnemyCommander != null && EnemyCommander.TeamName != my_teamname)
+                {
+                    EnemyCommander.HurtCommander(statblock.damage);
+                    return "success";
+                }
+            }
             return "no";
         }
     }
     void MoveToTarget()
     {
         float distance = Vector3.Distance(transform.position, targetted_enemy.transform.position);
-        if (targetted_enemy != null && distance>= statblock.atackrange*0.8)
+        if (targetted_enemy != null && distance>= statblock.attackrange*0.8)
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,
@@ -127,19 +155,34 @@ public class uniticontrol : MonoBehaviour
         statblock.health -= damagedealed;
         if (statblock.health <= 0)
         {
+            //ÕŒ¬Œ≈ ƒŒ¡¿¬À≈Õ»≈: ◊“Œ¡€ «ƒŒ–Œ¬‹≈ Œ“–ﬂƒ¿ »«Ã≈ÕﬂÀŒ—‹, ¿ Õ≈ Œ—“¿¬¿ÀŒ—‹ “¿ »Ã ∆≈ ó »Õ¿◊≈  ŒÃ¿Õƒ»– Õ≈ œŒ…Ã®“
+            squadcontrol parentsquad = GetComponentInParent<squadcontrol>(); 
+            if (parentsquad != null)
+            {
+                parentsquad.UpdateOverallHealth();
+                if (parentsquad.CountAliveUnits() == 0)
+                {
+                    EnemyCommander EnemyCommander = FindFirstObjectByType<EnemyCommander>();
+                    if (EnemyCommander != null && EnemyCommander.TeamName == my_teamname)
+                    {
+                        EnemyCommander.SquadDeath(parentsquad);
+                    }
+                    Destroy(parentsquad.gameObject);
+                }
+            }
             Destroy(gameObject);
         }
     }
     uniticontrol GetUnitscript(GameObject gameObject) 
     {
-        if (!enamiescache.ContainsKey(gameObject)) {
+        if (!enemiescache.ContainsKey(gameObject)) {
             try
             {
-                enamiescache[gameObject] = gameObject.GetComponent<uniticontrol>();
+                enemiescache[gameObject] = gameObject.GetComponent<uniticontrol>();
             }
             catch { }
         }
-        return enamiescache[gameObject];
+        return enemiescache[gameObject];
     }
 }
 

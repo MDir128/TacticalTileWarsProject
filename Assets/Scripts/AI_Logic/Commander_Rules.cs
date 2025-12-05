@@ -8,13 +8,16 @@ using UnityEngine.InputSystem;
 public class Commander_Rules : MonoBehaviour
 {
     [Header("General ruling stats")]
-    [SerializeField] private string TeamName; //название команды
+    [SerializeField] public string TeamName; //название команды
     [SerializeField] private float SelectionRadius; //радиус попадания объектов в область вокруг курсора
     [SerializeField] private squadcontrol SelectedSquad; //выбранная группа
     [Header("Commander stats")]
-    [SerializeField] private float CommanderSquadDistance = 3f; //дистанция между командиром и отрядом при движении
+    [SerializeField] private float CommanderHealth = 20f; //здоровье командира
     [SerializeField] private float CommanderSpeed = 5f; //скорость командира
+    [SerializeField] private float CommanderSquadDistance = 3f; //дистанция между командиром и отрядом при движении
     [SerializeField] private float SafeBattleDistanceSmallerThan3 = 2.5f; //безопасное расстояние между командиром и полем боя
+    [Header("Player squads settings")]
+    [SerializeField] private squadcontrol[] PlayerSquads = new squadcontrol[3]; //массив отрядов (ближний бой, дальнобойные и конницы)
     private Coroutine AttackCoroutine; //ссылка на текущую корутину атаки на вражеский сквад
     private Camera scene_camera;
     private Mouse player_mouse; //создание объекта для курсора мыши игрока

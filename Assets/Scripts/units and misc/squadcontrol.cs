@@ -4,7 +4,7 @@ using UnityEngine;
 public class squadcontrol : MonoBehaviour
 {
     [Header("squad stats")]
-    [SerializeField] public float atackrange = 1.5f;
+    [SerializeField] public float attackrange = 1.5f;
     [SerializeField] public float walkrange = 3f;
     [SerializeField] public string our_teamname;
     [SerializeField] public string this_squadname;
@@ -12,7 +12,7 @@ public class squadcontrol : MonoBehaviour
     [SerializeField] public float overallhealth;
 
     [SerializeField] public float damage = 2f;
-    [SerializeField] public float atackdelay = 1f;
+    [SerializeField] public float attackdelay = 1f;
     [SerializeField] public float health = 10f;
     [Header("misc")]
     [SerializeField] public GameObject[] units;
@@ -28,6 +28,11 @@ public class squadcontrol : MonoBehaviour
     void Start() 
     // Создания юнитов
     {
+        if (squadstats == null)
+        {
+            squadstats = new statblock();
+        }
+
         squadId = nextSquadId;
         nextSquadId++; //Теперь отряды нумерованны, ну что за антиутопия!
         //squadModifier[squadId] = new list<squadModifier>()
@@ -43,6 +48,7 @@ public class squadcontrol : MonoBehaviour
         }
         
         SetPositions();
+        UpdateOverallHealth();
         //SetEnemySquad(null); — убрал строчку, ведь squadcontrol Enemy в момент работы программы становятся null и вызывают ошибки
         //SetEnemySquad(basedEnemyName.GetComponent<squadcontrol>()); //так выставляется противник
     }
@@ -64,7 +70,12 @@ public class squadcontrol : MonoBehaviour
         {
             if (units[i] != null)
             {
-                health_sum += units[i].GetComponent<uniticontrol>().statblock.health;
+                //ДОБАВИЛ ДОПОЛНИТЕЛЬНУЮ ПРОВЕРКУ
+                uniticontrol currunit = units[i].GetComponent<uniticontrol>();
+                if (currunit != null && currunit.statblock != null)
+                {
+                    health_sum += currunit.statblock.health;
+                }
             }
         }
         overallhealth = health_sum;
@@ -110,6 +121,27 @@ public class squadcontrol : MonoBehaviour
     public statblock GetEnemyStats_statblock(squadcontrol Enemy)
     {
         return Enemy.squadstats;
+    }
+    //НОВЫЙ МЕТОД ПОДСЧЁТА ЮНИТОВ В СКВАДЕ
+    public int CountAliveUnits()
+    {
+        int alive_units_number = 0;
+        if (units == null)
+        {
+            return 0;
+        }
+        for (int i = 0; i < units.Length; i++)
+        {
+            if (units[i] != null)
+            {
+                uniticontrol oneunit = units[i].GetComponent<uniticontrol>(); //получение ссылки на объект каждого юнита
+                if (oneunit != null && oneunit.statblock != null && oneunit.statblock.health > 0)
+                {
+                    alive_units_number++;
+                }
+            }
+        }
+        return alive_units_number;
     }
 }
 
