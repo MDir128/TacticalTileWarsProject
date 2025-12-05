@@ -1,4 +1,4 @@
-using System;
+О╩©using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
@@ -21,7 +21,7 @@ public class uniticontrol : MonoBehaviour
     {
         enemiescache = new Dictionary<GameObject , uniticontrol>();
         if (statblock == null) {statblock = new statblock();}
-        //мнбши йсянй йндю ≈ мюярпнийю дкъ пюгмшу рхонб нрпъдю
+        //О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫
         if (statblock.unit_type == "melee")
         {
             statblock.attackrange = 1.5f;
@@ -117,7 +117,7 @@ public class uniticontrol : MonoBehaviour
         }
         else
         {
-            //днаюбхк юрюйс мю бпюфеяйнцн йнлюмдхпю (еы╗ мсфмн днаюбхрэ юрюйс мю йнлюмдхпю хцпнйю)
+            //О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫ О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ (О©╫ы╗ О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫ О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫)
             foreach (Collider2D collider in hitpossible)
             {
                 EnemyCommander EnemyCommander = collider.GetComponent<EnemyCommander>();
@@ -155,7 +155,7 @@ public class uniticontrol : MonoBehaviour
         statblock.health -= damagedealed;
         if (statblock.health <= 0)
         {
-            //мнбне днаюбкемхе: врнаш гднпнбэе нрпъдю хглемъкняэ, ю ме нярюбюкняэ рюйхл фе ≈ хмюве йнлюмдхп ме онил╗р
+            //О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫: О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫, О©╫ О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫ О©╫О©╫ О©╫ О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫ О©╫О©╫О©╫л╗О©╫
             squadcontrol parentsquad = GetComponentInParent<squadcontrol>(); 
             if (parentsquad != null)
             {

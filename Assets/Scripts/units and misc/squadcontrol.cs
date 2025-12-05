@@ -107,8 +107,8 @@ public class squadcontrol : MonoBehaviour
     } //эта функция определяет сквад противника под атаку
     public void SetPositions()
     {
-        Unit_formation formation = new Unit_formation(new SkirmishGen());
-        Vector3[] positions = formation.Genarate_formation(squad_size, transform.position, 3f, new Vector3());
+        Unit_formation formation = new Unit_formation(new SemiRoundGen());
+        Vector3[] positions = formation.Genarate_formation(squad_size, transform.position, 3f, new Vector3(1,0,0));
         for (int i = 0; i < units.Length; i++) {
             if (units[i] != null)
             {
