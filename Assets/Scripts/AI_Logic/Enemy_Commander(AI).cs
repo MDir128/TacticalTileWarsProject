@@ -7,7 +7,7 @@ using static UnityEngine.InputSystem.OnScreen.OnScreenStick;
 public class EnemyCommander : MonoBehaviour
 {
     [Header("Enemy AI Commander Stats")]
-    [SerializeField] public string TeamName = "Enemy";
+    [SerializeField] public string TeamName = "Red";
     [SerializeField] public string MyName = "John";
     [SerializeField] private float OurEnemyCommanderHealth = 20f;
     [SerializeField] private float DecisionsIntervalTime = 3f; //логика продолжительности отрезков времени между принятиями решений (атаковать, отступать) в секундах
@@ -19,10 +19,9 @@ public class EnemyCommander : MonoBehaviour
     private Commander_Rules PlayerCommander; //ссылка на командира игрока
     private float LogicTime = 0f; //таймер времени следующего решения
 
-    void Start()
+    void Start()    
     {
         PlayerCommander = FindFirstObjectByType<Commander_Rules>(); //нахождение и определение первого объекта типа командира (командира игрока)
-        CheckingSquadsAssignment();
         var t = gameObject.AddComponent<commander>();
         t.Init(TeamName, MyName, new GameObject[3], unitprefab);
         for (int i = 0; i < 3; i++)
@@ -45,17 +44,6 @@ public class EnemyCommander : MonoBehaviour
         {
             CommanderDeath();
             return;
-        }
-    }
-
-    void CheckingSquadsAssignment() //проверка назначения отрядов
-    {
-        for (int i = 0; i < OurEnemySquads.Length; i++)
-        {
-            if (OurEnemySquads[i] == null)
-            {
-                Debug.LogWarning($"Enemy squad {i} not assigned in EnemyCommander Inspector!");
-            }
         }
     }
 
