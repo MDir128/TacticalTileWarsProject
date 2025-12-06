@@ -9,7 +9,7 @@ public class squadcontrol : MonoBehaviour
     [SerializeField] public float walkrange = 3f;
     [SerializeField] public string our_teamname;
     [SerializeField] public string this_squadname;
-    [SerializeField] public int squad_size = 21;
+    [SerializeField] public int squad_size = 2;
     [SerializeField] public float overallhealth;
 
     [SerializeField] public float damage = 2f;
@@ -121,6 +121,7 @@ public class squadcontrol : MonoBehaviour
         if (squadstats == null)
         {
             transform.position = Vector3.MoveTowards(transform.position, point, speed * Time.deltaTime);
+            return;
         }
         transform.position = Vector3.MoveTowards(transform.position, point, squadstats.speed * Time.deltaTime);
     } // перемещение по глобальным координатам. *Нужно будет переработать, чтобы двигать юнитов по тодельности, а не весь сет.

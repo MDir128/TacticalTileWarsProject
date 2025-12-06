@@ -117,15 +117,29 @@ public class uniticontrol : MonoBehaviour
         }
         else
         {
-            //������� ����� �� ���������� ��������� (�٨ ����� �������� ����� �� ��������� ������)
             foreach (Collider2D collider in hitpossible)
-            {
+            {   
                 EnemyCommander EnemyCommander = collider.GetComponent<EnemyCommander>();
                 if (EnemyCommander != null && EnemyCommander.TeamName != my_teamname)
                 {
                     EnemyCommander.HurtCommander(statblock.damage);
                     return "success";
                 }
+
+                AllyCommander AllyCommander = collider.GetComponent<AllyCommander>();
+                if (AllyCommander != null && AllyCommander.TeamName != my_teamname)
+                {
+                    AllyCommander.HurtCommander(statblock.damage);
+                    return "success";
+                }
+
+                /*Commander_Rules PlayerCommander = collider.GetComponent<Commander_Rules>();
+                if (PlayerCommander != null && PlayerCommander.TeamName != my_teamname)
+                {
+                    PlayerCommander.HurtCommander(statblock.damage);
+                    return "success";
+                }
+                */
             }
             return "no";
         }
@@ -144,6 +158,10 @@ public class uniticontrol : MonoBehaviour
     }
     void Return_to_point()
     {
+        if (my_position == null)
+        {
+            return;
+        }
         transform.position = Vector3.MoveTowards(
             transform.position,
             my_position.transform.position, 
@@ -155,19 +173,36 @@ public class uniticontrol : MonoBehaviour
         statblock.health -= damagedealed;
         if (statblock.health <= 0)
         {
-            //����� ����������: ����� �������� ������ ����������, � �� ���������� ����� �� � ����� �������� �� ���̨�
             squadcontrol parentsquad = GetComponentInParent<squadcontrol>(); 
             if (parentsquad != null)
             {
                 parentsquad.UpdateOverallHealth();
                 if (parentsquad.CountAliveUnits() == 0)
                 {
-                    EnemyCommander EnemyCommander = FindFirstObjectByType<EnemyCommander>();
-                    if (EnemyCommander != null && EnemyCommander.TeamName == my_teamname)
+                    EnemyCommander[] enemycommanders = FindObjectsByType<EnemyCommander>(FindObjectsSortMode.InstanceID);
+                    foreach (var commander in enemycommanders)
                     {
-                        EnemyCommander.SquadDeath(parentsquad);
+                        if (commander != null && commander.TeamName == my_teamname)
+                        {
+                            commander.SquadDeath(parentsquad);
+                        }
+                    }
+                    AllyCommander[] allycommanders = FindObjectsByType<AllyCommander>(FindObjectsSortMode.InstanceID);
+                    foreach (var commander in allycommanders)
+                    {
+                        if (commander != null && commander.TeamName == my_teamname)
+                        {
+                            commander.SquadDeath(parentsquad);
+                        }
                     }
                     Destroy(parentsquad.gameObject);
+                    /*Commander_Rules PlayerCommander = FindFirstObjectByType<Commander_Rules>();
+                    if (PlayerCommander != null && PlayerCommander.TeamName == my_teamname)
+                    {
+                        PlayerCommander.SquadDeath(parentsquad);
+                    }
+                    Destroy(parentsquad.gameObject);
+                    */
                 }
             }
             Destroy(gameObject);
