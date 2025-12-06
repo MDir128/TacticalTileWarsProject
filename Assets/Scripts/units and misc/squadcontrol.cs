@@ -146,7 +146,7 @@ public class squadcontrol : MonoBehaviour
         {
             if (units[i] != null)
             {
-                uniticontrol oneunit = units[i].GetComponent<uniticontrol>(); //получение ссылки на объект каждого юнита
+                uniticontrol oneunit = units[i].GetComponentInChildren<uniticontrol>(); //получение ссылки на объект каждого юнита
                 if (oneunit != null && oneunit.statblock != null && oneunit.statblock.health > 0)
                 {
                     alive_units_number++;

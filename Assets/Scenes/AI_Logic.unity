@@ -178,11 +178,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.57
+      value: -3.02
       objectReference: {fileID: 0}
     - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.72
+      value: 0.62
       objectReference: {fileID: 0}
     - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -457,11 +457,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.07
+      value: -6.01
       objectReference: {fileID: 0}
     - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.1
+      value: -6.39
       objectReference: {fileID: 0}
     - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -743,6 +743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Commander_Rules
   TeamName: Player
+  MyName: Player
   SelectionRadius: 3
   SelectedSquad: {fileID: 0}
   CommanderHealth: 20
@@ -753,6 +754,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  unitprefab: {fileID: 9160748928996092325, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
 --- !u!114 &1843464930 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
@@ -782,11 +784,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.29
+      value: 4.3
       objectReference: {fileID: 0}
     - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.23
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.z

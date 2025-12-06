@@ -1,14 +1,16 @@
 ﻿using System;
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 
 public class Commander_Rules : MonoBehaviour
 {
     [Header("General ruling stats")]
-    [SerializeField] public string TeamName; //название команды
+    [SerializeField] public string TeamName = "Blue"; //название команды
+    [SerializeField] public string MyName = "Player";
     [SerializeField] private float SelectionRadius; //радиус попадания объектов в область вокруг курсора
     [SerializeField] private squadcontrol SelectedSquad; //выбранная группа
     [Header("Commander stats")]
@@ -18,22 +20,37 @@ public class Commander_Rules : MonoBehaviour
     [SerializeField] private float SafeBattleDistanceSmallerThan3 = 2.5f; //безопасное расстояние между командиром и полем боя
     [Header("Player squads settings")]
     [SerializeField] private squadcontrol[] PlayerSquads = new squadcontrol[3]; //массив отрядов (ближний бой, дальнобойные и конницы)
+    [SerializeField] public GameObject unitprefab;
     private Coroutine AttackCoroutine; //ссылка на текущую корутину атаки на вражеский сквад
     private Camera scene_camera;
     private Mouse player_mouse; //создание объекта для курсора мыши игрока
+    private commander commander;
+    private bool flagdead = false;
 
     void Start()
     {
         scene_camera = Camera.main;
         player_mouse = Mouse.current;
+        commander = gameObject.AddComponent<commander>();
+        commander.Init(TeamName, MyName, new GameObject[3], unitprefab);
+        for (int i = 0; i < 3; i++)
+        {
+            PlayerSquads[i] = commander.squads[i].GetComponent<squadcontrol>();
+        }   
     }
 
     void Update()
     {
+        if (CommanderHealth <= 0 && flagdead == false)
+        {
+            CommanderDeath();
+            return;
+        }
         if (player_mouse == null)
         {
             return;
         }
+
         PlayerSquadSelection();
         EnemySquadSelection();
     }
@@ -136,7 +153,7 @@ public class Commander_Rules : MonoBehaviour
                 }
             }
         }
-        if (!enemyfound) //если враг так и не был найден
+        if (enemyfound == false) //если враг так и не был найден
         {
             Debug.Log("Enemy hasn't been found");
         }
@@ -148,4 +165,82 @@ public class Commander_Rules : MonoBehaviour
             WithCursorSelectEnemySquad();
         }
     }
+
+    void CommanderMovement() //перемещение командира вместе с отрядами
+    {
+        Vector3 centerposition = Vector3.zero;
+        int count_alivesquads = 0;
+        foreach (var squad in PlayerSquads)
+        {
+            if (squad != null && squad.CountAliveUnits() > 0)
+            {
+                centerposition += squad.transform.position; //суммирование позиций живых отрядов
+                count_alivesquads++;
+            }
+        }
+        if (count_alivesquads > 0)
+        {
+            centerposition /= count_alivesquads; //центр — среднее арифметическое от количества отрядов
+            transform.position = Vector3.MoveTowards(transform.position, centerposition, 3f * Time.deltaTime); //перемещение за отрядами
+        }
+    }
+
+    //УНИЧТОЖЕНИЕ КОМАНДИРА, ПОЛУЧЕНИЕ КОМАНДДИРОМ УРОНА И УНИЧТОЖЕНИЕ ОТРЯДОВ
+    void CommanderDeath() //смерть командира
+    {
+        if (flagdead == true)
+        {
+            return;
+        }
+        flagdead = true;
+        Debug.Log("Player Commander died!");
+        if (AttackCoroutine != null)
+        {
+            StopAllCoroutines();
+            AttackCoroutine = null; //лучше на всякий остановить и конкретную корутину атаки
+        }
+        squadcontrol[] allsquads = FindObjectsByType<squadcontrol>(FindObjectsSortMode.InstanceID);
+        foreach (var squad in allsquads)
+        {
+            if (squad != null && squad.our_teamname == TeamName && squad.this_squadname.Contains(MyName))
+            {
+                Destroy(squad.gameObject);
+            }
+        }
+        if (transform.parent != null)
+        {
+            Destroy(transform.parent.gameObject); //уничтожается родительский элемент
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    public void HurtCommander(float damage) //командир игрока получает урон
+    {
+        if (flagdead == true)
+        {
+            return;
+        }
+        CommanderHealth -= damage;
+        Debug.Log($"Player Commander took {damage} damage. His current health: {CommanderHealth}");
+        if (CommanderHealth <= 0)
+        {
+            CommanderHealth = 0;
+            CommanderDeath();
+        }
+    }
+    public void SquadDeath(squadcontrol destroyedsquad) //уничтожение всего отряда
+    {
+        for (int i = 0; i < PlayerSquads.Length; i++)
+        {
+            if (PlayerSquads[i] == destroyedsquad)
+            {
+                PlayerSquads[i] = null;
+                Debug.Log($"Player squad {i} destroyed");
+                break;
+            }
+        }
+    }
 }
+

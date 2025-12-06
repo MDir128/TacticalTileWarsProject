@@ -8,7 +8,7 @@ public class EnemyCommander : MonoBehaviour
 {
     [Header("Enemy AI Commander Stats")]
     [SerializeField] public string TeamName = "Red";
-    [SerializeField] public string MyName = "John";
+    [SerializeField] public string MyName = "Jack";
     [SerializeField] private float OurEnemyCommanderHealth = 20f;
     [SerializeField] private float DecisionsIntervalTime = 3f; //логика продолжительности отрезков времени между принятиями решений (атаковать, отступать) в секундах
     [Header("Enemy squads settings")]
@@ -16,18 +16,17 @@ public class EnemyCommander : MonoBehaviour
     [SerializeField] public GameObject unitprefab;
     [Header("Other settings")]
     private string Behavior = "Attack"; //модель поведения 
-    private Commander_Rules PlayerCommander; //ссылка на командира игрока
     private float LogicTime = 0f; //таймер времени следующего решения
+    private commander commander;
     private bool flagdead = false;
 
     void Start()    
     {
-        PlayerCommander = FindFirstObjectByType<Commander_Rules>(); //нахождение и определение первого объекта типа командира (командира игрока)
-        var t = gameObject.AddComponent<commander>();
-        t.Init(TeamName, MyName, new GameObject[3], unitprefab);
+        commander = gameObject.AddComponent<commander>(); //нахождение и определение типа командира 
+        commander.Init(TeamName, MyName, new GameObject[3], unitprefab);
         for (int i = 0; i < 3; i++)
         {
-            OurEnemySquads[i] = t.squads[i].GetComponent<squadcontrol>();
+            OurEnemySquads[i] = commander.squads[i].GetComponent<squadcontrol>();
         }
     }
 
@@ -71,7 +70,7 @@ public class EnemyCommander : MonoBehaviour
         int player_units = 0;
         foreach (var squad in AllSquads)
         {
-            if (squad != null && squad.our_teamname != TeamName)
+            if (squad != null && squad.our_teamname == "Blue")
             {
                 player_units += squad.CountAliveUnits();
             }
@@ -79,10 +78,10 @@ public class EnemyCommander : MonoBehaviour
         return player_units;
     }
 
-    squadcontrol ClosestPlayerSquad() //нахождение ближайшего отряда игрока
+    squadcontrol ClosestEnemySquad() //нахождение ближайшего вражеского отряда 
     {
         squadcontrol[] AllSquads = FindObjectsByType<squadcontrol>(FindObjectsSortMode.InstanceID);
-        squadcontrol closest_playersquad = null;
+        squadcontrol closest_enemysquad = null;
         float mindistance = Mathf.Infinity; //полезно, ведь при будущем сравнении не найдётся отряда большего положительной бесконечности
         foreach (var squad in AllSquads)
         {
@@ -92,11 +91,11 @@ public class EnemyCommander : MonoBehaviour
                 if (distance < mindistance)
                 {
                     mindistance = distance;
-                    closest_playersquad = squad;
+                    closest_enemysquad = squad;
                 }
             }
         }
-        return closest_playersquad;
+        return closest_enemysquad;
     }
 
     //ОЦЕНКА УГРОЗЫ И ОПРЕДЕЛЕНИЕ ПОВЕДЕНИЯ
@@ -107,28 +106,28 @@ public class EnemyCommander : MonoBehaviour
         float threat_health_level = ((100 - OurEnemyCommanderHealth) / 100f) * 50f; //показатель угрозы по здоровью командира (диапазон от 0 до 50)
         //второй уровень — оценка количества вражеских сил
         int my_units_num = EnemyAliveUnits(); //количество юнитов у этого вражеского командира
-        int player_units_num = PlayerAliveUnits(); //количество юнитов у нашего игрока 
+        int enemy_units_num = PlayerAliveUnits(); //количество юнитов у нашего игрока 
         float threat_numforce_level = 0f; //показатель уровня угрозы по разнице сил (диапазон от -50 до 100)
-        if (my_units_num > 0 && player_units_num > 0)
+        if (my_units_num > 0 && enemy_units_num > 0)
         {
-            if (my_units_num > player_units_num)
+            if (my_units_num > enemy_units_num)
             {
                 threat_numforce_level = -25f; //низкая угроза 
             }
-            else if (my_units_num < player_units_num)
+            else if (my_units_num < enemy_units_num)
             {
-                threat_numforce_level = ((float)player_units_num / my_units_num) * 25f; //средняя-экстремальная угроза
+                threat_numforce_level = ((float)enemy_units_num / my_units_num) * 25f; //средняя-экстремальная угроза
             }
             else
             {
                 threat_numforce_level = 15f; //средняя угроза
             }
         }
-        else if (my_units_num > 0 && player_units_num == 0)
+        else if (my_units_num > 0 && enemy_units_num == 0)
         {
             threat_numforce_level = -50f; //очень низкая угроза
         }
-        else if (my_units_num == 0 && player_units_num > 0)
+        else if (my_units_num == 0 && enemy_units_num > 0)
         {
             threat_numforce_level = 50f; //высокая угроза
         }
@@ -180,7 +179,8 @@ public class EnemyCommander : MonoBehaviour
     //СЦЕНАРИИ ПОВЕДЕНИЯ
     void AttackBehavior() //поведение при Атаке
     {
-        if (PlayerCommander == null)
+        squadcontrol enemysquad = ClosestEnemySquad();
+        if (enemysquad == null)
         {
             return;
         }
@@ -188,26 +188,26 @@ public class EnemyCommander : MonoBehaviour
         {
             if (squad != null && squad.CountAliveUnits() > 0)
             {
-                Vector3 attackdirection = (PlayerCommander.transform.position - squad.transform.position).normalized; //построение вектора траектории направления движения
+                Vector3 attackdirection = (enemysquad.transform.position - squad.transform.position).normalized; //построение вектора траектории направления движения
                 squad.transform.position += attackdirection * squad.speed * Time.deltaTime; //перемещение союзной группы
-                squadcontrol playersquad = ClosestPlayerSquad();
-                if (playersquad != null)
+                if (enemysquad != null)
                 {
-                    squad.SetEnemySquad(playersquad);
+                    squad.SetEnemySquad(enemysquad);
                 }
             }
         }
     }
     void RetreatBehavior() //поведение при Отступлении
     {
-        if (PlayerCommander == null)
+        squadcontrol enemysquad = ClosestEnemySquad();
+        if (enemysquad == null)
         {
             return;
         }
-        float playerdistance = Vector3.Distance(transform.position, PlayerCommander.transform.position); //отступление только если слишком быстро к игроку
-        if (playerdistance < 10f)
+        float enemydistance = Vector3.Distance(transform.position, enemysquad.transform.position); //отступление только если слишком быстро к игроку
+        if (enemydistance < 10f)
         {
-            Vector3 retreatdirection = (transform.position - PlayerCommander.transform.position).normalized; //построение вектора от командира игрока к командиру врага
+            Vector3 retreatdirection = (transform.position - enemysquad.transform.position).normalized; //построение вектора от командира игрока к командиру врага
             Vector3 retreatposition = transform.position + retreatdirection * 3f; //задача точки отступления
             transform.position = Vector3.MoveTowards(transform.position, retreatposition, 1.5f * Time.deltaTime); //уход к точке отступления
         }

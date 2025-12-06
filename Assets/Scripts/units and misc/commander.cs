@@ -16,7 +16,7 @@ public class commander : MonoBehaviour
         for (int i = 0; i < squads.Length; i++)
         {
             var t = new GameObject(my_name + i);
-            squads[i] = Instantiate(t, transform.position, transform.rotation);
+            squads[i] = Instantiate(t, transform);
             Destroy(t);
             squadcontrol sqctr = squads[i].AddComponent<squadcontrol>();
             if (our_teamname == "Blue")
@@ -28,6 +28,7 @@ public class commander : MonoBehaviour
                 sqctr.squadcolor = new Color(161f/255f, 39f/255f, 39f/255f);
             }
             sqctr.unit_prefab = unitprefab;
+            squads[i].transform.parent = transform;
             sqctr.Init(our_teamname, my_name+i);
         }
     }
