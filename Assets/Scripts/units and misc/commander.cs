@@ -15,8 +15,10 @@ public class commander : MonoBehaviour
         this.unitprefab = unitpref;
         for (int i = 0; i < squads.Length; i++)
         {
-            GameObject generic_prefab = new GameObject();
-            squadcontrol sqctr = generic_prefab.AddComponent<squadcontrol>();
+            var t = new GameObject(my_name + i);
+            squads[i] = Instantiate(t, transform);
+            Destroy(t);
+            squadcontrol sqctr = squads[i].AddComponent<squadcontrol>();
             if (our_teamname == "Blue")
             {
                 sqctr.squadcolor = new Color(78f/255f, 82f/255f, 185f/255f);
@@ -26,15 +28,13 @@ public class commander : MonoBehaviour
                 sqctr.squadcolor = new Color(161f/255f, 39f/255f, 39f/255f);
             }
             sqctr.unit_prefab = unitprefab;
-            squads[i] = Instantiate(generic_prefab,  transform);
+            squads[i].transform.parent = transform;
             sqctr.Init(our_teamname, my_name+i);
         }
     }
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         
     }
 
