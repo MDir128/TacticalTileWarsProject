@@ -81,9 +81,12 @@ public class Commander_Rules : MonoBehaviour
             squadcontrol squad = squads.GetComponentInParent<squadcontrol>();
             if (squad != null && squad.our_teamname == TeamName)
             {
-                SelectedSquad = squad;
-                Debug.Log($"SelectedSquad: {squad.this_squadname}"); //вывод сообщения в консоль
-                break;
+                if (squad.this_squadname.StartsWith(MyName))
+                {
+                    SelectedSquad = squad;
+                    Debug.Log($"SelectedSquad: {squad.this_squadname}"); //вывод сообщения в консоль
+                    break;
+                }
             }
         }
     }
@@ -101,24 +104,25 @@ public class Commander_Rules : MonoBehaviour
         while (our_squad != null && target_enemy_squad != null)
         {
             float squad_distance = Vector3.Distance(target_enemy_squad.transform.position, our_squad.transform.position);
-            float commander_distance = Vector3.Distance(target_enemy_squad.transform.position, our_squad.transform.position);
-            if (squad_distance > our_squad.walkrange) //проверка на то, нужно ли вообще двигаться
+            float commander_toenemy_distance = Vector3.Distance(target_enemy_squad.transform.position, transform.position);
+            float commander_tosquad_distance = Vector3.Distance(our_squad.transform.position, transform.position);
+            if (squad_distance > our_squad.attackrange * 0.8f) //проверка на то, нужно ли вообще двигаться
             {
                 Vector3 direction = (target_enemy_squad.transform.position - our_squad.transform.position).normalized; //построение вектора траектории направления движения
                 our_squad.transform.position += direction * our_squad.speed * Time.deltaTime; //перемещение союзной группы
                 Vector3 commander_position = our_squad.transform.position - direction * CommanderSquadDistance; //перемещение командира за своей группой
                 transform.position = Vector3.MoveTowards(transform.position, commander_position, CommanderSpeed * Time.deltaTime);
             }
-            else if (commander_distance > SafeBattleDistanceSmallerThan3) //если командир слишком далеко от отряда 
+            else if (commander_toenemy_distance < SafeBattleDistanceSmallerThan3) //если командир слишком далеко от отряда 
             {
-                Vector3 safe_position = our_squad.transform.position;
-                Vector3 direction_to_squad = (our_squad.transform.position - transform.position).normalized;
-                safe_position -= direction_to_squad * SafeBattleDistanceSmallerThan3;
+                Vector3 retreat_direction = (our_squad.transform.position - transform.position).normalized;
+                Vector3 safe_position = transform.position + retreat_direction * SafeBattleDistanceSmallerThan3;
                 transform.position = Vector3.MoveTowards(transform.position, safe_position, CommanderSpeed * Time.deltaTime);
             }
-            else
+            else if (commander_toenemy_distance > SafeBattleDistanceSmallerThan3) //если командир слишком далеко от отряда 
             {
-                Debug.Log($"Squad {our_squad.this_squadname} has reached {target_enemy_squad.this_squadname}. Commander is holding safe position");
+                Vector3 direction_tosquad = (our_squad.transform.position - transform.position).normalized;
+                transform.position = Vector3.MoveTowards(transform.position, our_squad.transform.position - direction_tosquad * CommanderSquadDistance, CommanderSpeed * Time.deltaTime);
             }
             yield return null; //обновляет позицию сквада каждый кадр
         }
