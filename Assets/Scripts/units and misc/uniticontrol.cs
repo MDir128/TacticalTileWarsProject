@@ -18,6 +18,8 @@ public class uniticontrol : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private Dictionary<GameObject , uniticontrol> enemiescache;
+    private float NextTimeSearching = 0f;
+    private float SearchingInterval = 1f;
     void Start()
     {
         enemiescache = new Dictionary<GameObject , uniticontrol>();
@@ -57,8 +59,12 @@ public class uniticontrol : MonoBehaviour
         }
         else
         {
+            //будет осуществляться поиск цели только, если прошло время для следующего поиска
+            if (Time.time >= NextTimeSearching)
+            {
+                FindTarget();
+            }
             Return_to_point();
-            FindTarget();
         }
         if (recharge <= 0) {
             string output = Attack();
@@ -75,23 +81,29 @@ public class uniticontrol : MonoBehaviour
 
     public void FindTarget()
     {
-        float findrange = math.max(statblock.walkrange, statblock.attackrange);
-        float clothest = findrange + 10;
+        if (Time.time < NextTimeSearching)
+        {
+            return;
+        }
+        float findrange = math.max(statblock.walkrange, statblock.attackrange) * 50f;
+        float closest = findrange + 10;
         targetted_enemy = null;
         Collider2D[] possible_enemy = Physics2D.OverlapCircleAll(transform.position, findrange);
         foreach (Collider2D collider in possible_enemy)
         {
             uniticontrol unit = GetUnitscript(collider.gameObject);
-            if (unit != null && unit.my_squadname == enemy_squadname)
+            if (unit != null && unit.my_teamname != my_teamname)
             {
                 float distance = Vector3.Distance(transform.position, collider.transform.position);
-                if (distance < clothest)
+                if (distance < closest)
                 {
-                    clothest = distance;
+                    closest = distance;
                     targetted_enemy = unit;
+                    enemy_squadname = unit.my_squadname;
                 }
             }
         }
+        NextTimeSearching = Time.time + SearchingInterval;
     }
     public string Attack()
     {

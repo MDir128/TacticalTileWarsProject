@@ -132,7 +132,6 @@ public class Commander_Rules : MonoBehaviour
         {
             if (squad != null && squad.CountAliveUnits() > 0)
             {
-                squad.SetEnemySquad(null); //сначала нужно сбросить цель на атаку, если она есть
                 squad.PlayerSquadFollow(transform.position); //движение отрядов относительно позиции командира
             }
         }
@@ -250,25 +249,6 @@ public class Commander_Rules : MonoBehaviour
         if (player_mouse.rightButton.wasPressedThisFrame && SelectedSquad != null) //если была нажата правая кнопка мыши и есть вражеская группа
         {
             WithCursorSelectEnemyTarget();
-        }
-    }
-
-    void CommanderMovement() //перемещение командира вместе с отрядами
-    {
-        Vector3 centerposition = Vector3.zero;
-        int count_alivesquads = 0;
-        foreach (var squad in PlayerSquads)
-        {
-            if (squad != null && squad.CountAliveUnits() > 0)
-            {
-                centerposition += squad.transform.position; //суммирование позиций живых отрядов
-                count_alivesquads++;
-            }
-        }
-        if (count_alivesquads > 0)
-        {
-            centerposition /= count_alivesquads; //центр — среднее арифметическое от количества отрядов
-            transform.position = Vector3.MoveTowards(transform.position, centerposition, 3f * Time.deltaTime); //перемещение за отрядами
         }
     }
 

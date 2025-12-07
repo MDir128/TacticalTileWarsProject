@@ -77,6 +77,7 @@ public class AllyCommander : MonoBehaviour
         return enemy_units;
     }
 
+    //НАХОЖДЕНИЕ БЛИЖАЙШИХ ЦЕЛЕЙ
     squadcontrol ClosestEnemySquad() //нахождение ближайшего отряда врага
     {
         squadcontrol[] AllSquads = FindObjectsByType<squadcontrol>(FindObjectsSortMode.InstanceID);
@@ -95,6 +96,25 @@ public class AllyCommander : MonoBehaviour
             }
         }
         return closest_enemysquad;
+    }
+    Transform ClosestEnemyCommander() //нахождение ближайшего командира врага
+    {
+        EnemyCommander[] enemycommanders = FindObjectsByType<EnemyCommander>(FindObjectsSortMode.InstanceID);
+        Transform closestcommander = null;
+        float mindistance = Mathf.Infinity; //полезно, ведь при будущем сравнении не найдётся отряда большего положительной бесконечности
+        foreach (var enemies in enemycommanders)
+        {
+            if (enemies.TeamName == "Red")
+            {
+                float distance = Vector3.Distance(transform.position, enemies.transform.position);
+                if (distance < mindistance)
+                {
+                    mindistance = distance;
+                    closestcommander = enemies.transform;
+                }
+            }
+        }
+        return closestcommander;
     }
 
     //ОЦЕНКА УГРОЗЫ И ОПРЕДЕЛЕНИЕ ПОВЕДЕНИЯ
@@ -179,18 +199,26 @@ public class AllyCommander : MonoBehaviour
     void AttackBehavior() //поведение при Атаке
     {
         squadcontrol enemysquad = ClosestEnemySquad();
-        if (enemysquad == null)
+        Transform enemycommander = ClosestEnemyCommander();
+        if (enemycommander != null)
         {
-            return;
-        }
-        foreach (var squad in OurAllySquads)
-        {
-            if (squad != null && squad.CountAliveUnits() > 0)
+            foreach (var squad in OurAllySquads)
             {
-                Vector3 attackdirection = (enemysquad.transform.position - squad.transform.position).normalized; //построение вектора траектории направления движения
-                squad.transform.position += attackdirection * squad.speed * Time.deltaTime; //перемещение союзной группы
-                if (enemysquad != null)
+                if (squad != null && squad.CountAliveUnits() > 0)
                 {
+                    Vector3 direction = (enemycommander.position - squad.transform.position).normalized;
+                    squad.transform.position += direction * squad.speed * Time.deltaTime;
+                }
+            }
+        }
+        else if (enemysquad != null)
+        {
+            foreach (var squad in OurAllySquads)
+            {
+                if (squad != null && squad.CountAliveUnits() > 0)
+                {
+                    Vector3 direction = (enemysquad.transform.position - squad.transform.position).normalized;
+                    squad.transform.position += direction * squad.speed * Time.deltaTime;
                     squad.SetEnemySquad(enemysquad);
                 }
             }

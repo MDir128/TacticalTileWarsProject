@@ -115,6 +115,7 @@ public class squadcontrol : MonoBehaviour
                 if (units[i] != null)
                 {
                     uniticontrol uniticontrol = units[i].GetComponentInChildren<uniticontrol>();
+                    if (uniticontrol != null)
                     {
                         uniticontrol.targetted_enemy_commander = EnemyCommander;
                     }
