@@ -74,3 +74,5 @@ MonoBehaviour:
   castle_4_TilePrefabs:
   - {fileID: 1022622728607535257, guid: 0d8d1fc7fa8297b488dc947508b84617, type: 3}
   - {fileID: 8621714384489123375, guid: f78134daf2987204ea70da2317b7e70e, type: 3}
+  border_TilePrefabs:
+  - {fileID: 5159363826991349701, guid: 5fdb151264e0f0648a3419dbf52f3bf2, type: 3}

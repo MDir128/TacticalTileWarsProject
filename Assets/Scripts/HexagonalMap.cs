@@ -10,7 +10,8 @@ public enum TileType
     Castle1,
     Castle2,
     Castle3,
-    Castle4
+    Castle4,
+    Border
 }
 
 public class HexTile
@@ -40,6 +41,7 @@ public class HexagonalMap : MonoBehaviour
     public GameObject[] castle_2_TilePrefabs;
     public GameObject[] castle_3_TilePrefabs;
     public GameObject[] castle_4_TilePrefabs;
+    public GameObject[] border_TilePrefabs;
 
     private Dictionary<Vector2Int, HexTile> hexGrid = new Dictionary<Vector2Int, HexTile>();
     private Dictionary<Vector2Int, GameObject> tileObjects = new Dictionary<Vector2Int, GameObject>();
@@ -56,6 +58,7 @@ public class HexagonalMap : MonoBehaviour
         GenerateHexGrid();
         ApplyPerlinNoise();
         PlaceCastles();
+        AddBorderLayer();
         VisualizeTiles();
         PrintCastlesDictionary(); // Для отладки
         onload?.Invoke(this, true);
@@ -231,6 +234,49 @@ public class HexagonalMap : MonoBehaviour
         hexGrid[pattern[3]].Type = TileType.Castle4;
     }
 
+    //ГРАНИЦЫ КАРТЫ
+    //ГРАНИЦЫ КАРТЫ
+    private void AddBorderLayer()
+    {
+        int borderRadius = mapRadius + 1; // Новый внешний радиус
+
+        // Генерируем гексы только для внешнего кольца (границы)
+        for (int q = -borderRadius; q <= borderRadius; q++)
+        {
+            for (int r = -borderRadius; r <= borderRadius; r++)
+            {
+                int s = -q - r;
+
+                // Проверяем, находится ли гекс на внешнем кольце границы
+                // В гексагональной сетке гекс находится на кольце радиуса R,
+                // если максимальное абсолютное значение из трёх координат равно R
+                int maxCoord = Mathf.Max(Mathf.Abs(q), Mathf.Abs(r), Mathf.Abs(s));
+
+                // Создаём только гексы, которые находятся именно на внешнем кольце (границе)
+                // И не существуют в основном гриде
+                if (maxCoord == borderRadius)
+                {
+                    Vector2Int gridPos = new Vector2Int(q, r);
+
+                    // Не создаём, если уже есть (внутренние гексы)
+                    if (!hexGrid.ContainsKey(gridPos))
+                    {
+                        Vector3 worldPos = GridToWorldPosition(gridPos);
+
+                        HexTile borderTile = new HexTile
+                        {
+                            GridPosition = gridPos,
+                            WorldPosition = worldPos,
+                            Type = TileType.Border
+                        };
+
+                        hexGrid.Add(gridPos, borderTile);
+                    }
+                }
+            }
+        }
+    }
+
     private void VisualizeTiles()
     {
         // Удаляем старые тайлы
@@ -277,6 +323,8 @@ public class HexagonalMap : MonoBehaviour
                 return castle_3_TilePrefabs[UnityEngine.Random.Range(0, castle_3_TilePrefabs.Length)];
             case TileType.Castle4:
                 return castle_4_TilePrefabs[UnityEngine.Random.Range(0, castle_4_TilePrefabs.Length)];
+            case TileType.Border:
+                return border_TilePrefabs[0]; //Всего один тип, поэтому просто выбираем нулевой элемент
             default:
                 return plainTilePrefabs[0];
         }
