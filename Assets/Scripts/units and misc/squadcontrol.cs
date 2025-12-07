@@ -9,7 +9,7 @@ public class squadcontrol : MonoBehaviour
     [SerializeField] public float walkrange = 3f;
     [SerializeField] public string our_teamname;
     [SerializeField] public string this_squadname;
-    [SerializeField] public int squad_size = 21;
+    [SerializeField] public int squad_size = 2;
     [SerializeField] public float overallhealth;
 
     [SerializeField] public float damage = 2f;
@@ -29,7 +29,7 @@ public class squadcontrol : MonoBehaviour
     {
         this.our_teamname = our_teamname;
         this.this_squadname = this_squadname;
-        // Создания юнитов
+        // Создание юнитов
         {
             if (squadstats == null)
             {
@@ -118,9 +118,12 @@ public class squadcontrol : MonoBehaviour
     } // Эта функция обновляет построение отряда, переставляя целевые позиции юнитов по активному генератору позиций (в данном случае - рассыпной)
     public void Gotopoint_global(Vector3 point)
     {
-        transform.position = Vector3.MoveTowards(
-            transform.position, point, squadstats.speed * Time.deltaTime
-            );
+        if (squadstats == null)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, point, speed * Time.deltaTime);
+            return;
+        }
+        transform.position = Vector3.MoveTowards(transform.position, point, squadstats.speed * Time.deltaTime);
     } // перемещение по глобальным координатам. *Нужно будет переработать, чтобы двигать юнитов по тодельности, а не весь сет.
       // Скорее всего, нужно будет в мозгах юнита убрать родительский префаб, сделав самостоятельным объектом и включать им функцию возращения на позицию. Но это потом.
     public void Gotopoint_local()
@@ -143,7 +146,7 @@ public class squadcontrol : MonoBehaviour
         {
             if (units[i] != null)
             {
-                uniticontrol oneunit = units[i].GetComponent<uniticontrol>(); //получение ссылки на объект каждого юнита
+                uniticontrol oneunit = units[i].GetComponentInChildren<uniticontrol>(); //получение ссылки на объект каждого юнита
                 if (oneunit != null && oneunit.statblock != null && oneunit.statblock.health > 0)
                 {
                     alive_units_number++;
@@ -151,6 +154,13 @@ public class squadcontrol : MonoBehaviour
             }
         }
         return alive_units_number;
+    }
+    //НОВЫЙ МЕТОД ДЛЯ ДВИЖЕНИЯ ОТРЯДОВ ИГРОКА ВМЕСТЕ С КОМАНДИРОМ ПРИ УПРАВЛЕНИИ С КЛАВИАТУРЫ
+    public void PlayerSquadFollow(Vector3 commander_position)
+    {
+        Vector3 target_position = commander_position + new Vector3(UnityEngine.Random.Range(-3f, 3f), UnityEngine.Random.Range(-3, 3f), 0);
+        Gotopoint_global(target_position);
+
     }
 }
 

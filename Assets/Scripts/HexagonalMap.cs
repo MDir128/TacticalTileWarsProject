@@ -47,6 +47,9 @@ public class HexagonalMap : MonoBehaviour
     // Словарь для хранения данных о замках: {номер замка, МИРОВАЯ координата Castle1}
     private Dictionary<int, Vector2> castlesDictionary = new Dictionary<int, Vector2>();
 
+    //Eventhandler чтобы знать когда закончилась генерация.
+    public EventHandler<bool> onload;
+
     [ContextMenu("Generate Map")]
     public void GenerateMap()
     {
@@ -55,6 +58,7 @@ public class HexagonalMap : MonoBehaviour
         PlaceCastles();
         VisualizeTiles();
         PrintCastlesDictionary(); // Для отладки
+        onload?.Invoke(this, true);
     }
 
     private void GenerateHexGrid()

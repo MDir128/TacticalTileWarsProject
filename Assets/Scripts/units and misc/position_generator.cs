@@ -32,18 +32,17 @@ public class SemiRoundGen : IFormatSet {
     {
         Vector3[] positions = new Vector3[unitcount];
         float radius = spacing * unitcount * 0.2f / math.PI;
-        Vector3 forward = Vector3.Normalize(direction);
-        Vector3 right = Vector3.Normalize(Vector3.Cross(forward, Vector3.right)).normalized;
+        float angle_fix = Vector3.Angle(Vector3.up, direction) * (float)Math.PI/180f;
         for (int i = 0; i < unitcount; i++)
         {
             float angle;
             if (i < unitcount / 2-1)
             {
-                angle = 2 * i * (float)(Math.PI / unitcount);
+                angle = 2 * i * (float)(Math.PI / unitcount) + angle_fix;
             }
             else
             {
-                angle = 2 * (i- unitcount/2-1) * (float)(Math.PI / unitcount);
+                angle = 2 * (i- unitcount/2-1) * (float)(Math.PI / unitcount) + angle_fix;
                 radius = spacing * unitcount * 0.3f / math.PI;
             }
             float x = center.x + math.cos(angle) * radius;
@@ -51,11 +50,6 @@ public class SemiRoundGen : IFormatSet {
             positions[i] = /*RotatePosition(*/new Vector3(x, y, center.z)/*, forward, right)*/;
         }
         return positions;
-    }
-    private Vector3 RotatePosition(Vector3 localPos, Vector3 forward, Vector3 right)
-    {
-        // Преобразуем локальные координаты в мировые с учетом направления
-        return localPos.x * right + localPos.y * forward;
     }
 }
 public class RoundGen : IFormatSet

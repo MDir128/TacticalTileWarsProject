@@ -147,139 +147,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b68ea609218bbc4e893d580026ae545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyCommander
-  TeamName: Red
-  MyName: Jack
+  TeamName: Enemy
+  MyName: John
   OurEnemyCommanderHealth: 20
-  DecisionsIntervalTime: 1
+  DecisionsIntervalTime: 3
   OurEnemySquads:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  unitprefab: {fileID: 9160748928996092325, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
---- !u!1001 &346506025
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 423986819586540919, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7896477
-      objectReference: {fileID: 0}
-    - target: {fileID: 423986819586540919, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7896477
-      objectReference: {fileID: 0}
-    - target: {fileID: 423986819586540919, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.7896477
-      objectReference: {fileID: 0}
-    - target: {fileID: 423986819586540919, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 423986819586540919, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: my_teamname
-      value: Blue
-      objectReference: {fileID: 0}
-    - target: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: my_squadname
-      value: ally commander 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: enemy_squadname
-      value: Red
-      objectReference: {fileID: 0}
-    - target: {fileID: 4242850060955508850, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 5587631318740030771, guid: a0fcb8e3cd1a4bf4cb75bd75aeb480d9, type: 3}
-    - target: {fileID: 4242850060955508850, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4242850060955508850, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_Color.g
-      value: 0.65882355
-      objectReference: {fileID: 0}
-    - target: {fileID: 4242850060955508850, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6997804490444202156, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6997804490444202156, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_EdgeRadius
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6997804490444202156, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.8125
-      objectReference: {fileID: 0}
-    - target: {fileID: 6997804490444202156, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.2659135
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160748928996092325, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_Name
-      value: AllyCommander2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4984536237241621620, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1145810952}
-  m_SourcePrefab: {fileID: 100100000, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
+  unitprefab: {fileID: 274401837}
+--- !u!1 &274401837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9160748928996092325, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
+  m_PrefabInstance: {fileID: 2007089803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &498608050
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,174 +298,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!1 &579105539 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4984536237241621620, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-  m_PrefabInstance: {fileID: 591614741}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &579105541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 579105539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a225d1eaf97f214d8adc8529dcc41f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AllyCommander
-  TeamName: Blue
-  MyName: John
-  OurAllyCommanderHealth: 1
-  DecisionsIntervalTime: 3
-  OurAllySquads:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  unitprefab: {fileID: 9160748928996092325, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
---- !u!1001 &591614741
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 423986819586540919, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7896477
-      objectReference: {fileID: 0}
-    - target: {fileID: 423986819586540919, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7896477
-      objectReference: {fileID: 0}
-    - target: {fileID: 423986819586540919, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.7896477
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -6.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: my_teamname
-      value: Blue
-      objectReference: {fileID: 0}
-    - target: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: my_squadname
-      value: ally commander 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: enemy_squadname
-      value: Red
-      objectReference: {fileID: 0}
-    - target: {fileID: 4242850060955508850, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 93268706877955529, guid: a0fcb8e3cd1a4bf4cb75bd75aeb480d9, type: 3}
-    - target: {fileID: 4242850060955508850, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4242850060955508850, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_Color.g
-      value: 0.65882355
-      objectReference: {fileID: 0}
-    - target: {fileID: 4242850060955508850, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6997804490444202156, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6997804490444202156, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_EdgeRadius
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6997804490444202156, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.8632812
-      objectReference: {fileID: 0}
-    - target: {fileID: 6997804490444202156, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.3010743
-      objectReference: {fileID: 0}
-    - target: {fileID: 9160748928996092325, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_Name
-      value: AllyCommander1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4984536237241621620, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 579105541}
-  m_SourcePrefab: {fileID: 100100000, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
---- !u!1 &1145810950 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4984536237241621620, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-  m_PrefabInstance: {fileID: 346506025}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1145810952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1145810950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a225d1eaf97f214d8adc8529dcc41f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AllyCommander
-  TeamName: Blue
-  MyName: Ben
-  OurAllyCommanderHealth: 20
-  DecisionsIntervalTime: 1
-  OurAllySquads:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  unitprefab: {fileID: 9160748928996092325, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
 --- !u!1001 &1358165999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -607,23 +320,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 423986819586540919, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.4156
       objectReference: {fileID: 0}
     - target: {fileID: 423986819586540919, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 423986819586540919, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
+      value: 0.4155
       objectReference: {fileID: 0}
     - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5
+      value: -8.856356
       objectReference: {fileID: 0}
     - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.62
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -659,7 +368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: my_teamname
-      value: Blue
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: my_squadname
@@ -667,7 +376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: enemy_squadname
-      value: Red
+      value: red
       objectReference: {fileID: 0}
     - target: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: targetted_enemy
@@ -703,7 +412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6997804490444202156, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_EdgeRadius
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6997804490444202156, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -750,19 +459,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174918401fa18ec43afd0d7b3a4caecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Commander_Rules
-  TeamName: Blue
-  MyName: Player
+  TeamName: Player
   SelectionRadius: 3
   SelectedSquad: {fileID: 0}
-  CommanderHealth: 20
-  CommanderSpeed: 2
-  CommanderSquadDistance: 0
-  SafeBattleDistanceSmallerThan3: 0
+  CommanderHealth: 200
+  CommanderSpeed: 5
+  CommanderSquadDistance: 2
+  SafeBattleDistanceSmallerThan3: 2.5
   PlayerSquads:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  unitprefab: {fileID: 9160748928996092325, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
 --- !u!114 &1843464930 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
@@ -792,11 +499,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.02
+      value: 4.91
       objectReference: {fileID: 0}
     - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.13
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 2720475171457833910, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -832,7 +539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: my_teamname
-      value: Red
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: my_squadname
@@ -840,7 +547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: enemy_squadname
-      value: Blue
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3367156522209587121, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: targetted_enemy
@@ -868,7 +575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6997804490444202156, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_EdgeRadius
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6997804490444202156, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -880,7 +587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9160748928996092325, guid: 3e77e4a667d028544810a0fd8c31162e, type: 3}
       propertyPath: m_Name
-      value: EnemyCommander1
+      value: EnemyCommander
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -896,6 +603,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 498608053}
   - {fileID: 1358165999}
-  - {fileID: 591614741}
-  - {fileID: 346506025}
   - {fileID: 2007089803}
