@@ -11,7 +11,7 @@ public class Commander_Rules : MonoBehaviour
     [Header("General ruling stats")]
     [SerializeField] public string TeamName = "Blue"; //название команды
     [SerializeField] public string MyName = "Player";
-    [SerializeField] private float SelectionRadius; //радиус попадания объектов в область вокруг курсора
+    [SerializeField] private float SelectionRadius = 0.25f; //радиус попадания объектов в область вокруг курсора
     [SerializeField] private squadcontrol SelectedSquad; //выбранная группа
     [Header("Commander stats")]
     [SerializeField] private float CommanderHealth = 20f; //здоровье командира
@@ -26,6 +26,7 @@ public class Commander_Rules : MonoBehaviour
     private Mouse player_mouse; //создание объекта для курсора мыши игрока
     private commander commander;
     private bool flagdead = false;
+    private Dictionary<squadcontrol, Coroutine> AttackCoroutines = new Dictionary<squadcontrol, Coroutine>(); //словарь для корутин атаки
 
     void Start()
     {
@@ -137,8 +138,8 @@ public class Commander_Rules : MonoBehaviour
         }
     }
 
-    //ДВИЖЕНИЕ К ПРОТИВНИКУ
-    IEnumerator AttackMovement(squadcontrol our_squad, squadcontrol target_enemy_squad) //логика движения союзного сквада к цели 
+    //ДВИЖЕНИЕ К СКВАДУ ПРОТИВНИКА
+    IEnumerator AttackSquadMovement(squadcontrol our_squad, squadcontrol target_enemy_squad) //логика движения союзного сквада к цели-скваду
     {
         while (our_squad != null && target_enemy_squad != null)
         {
@@ -166,32 +167,75 @@ public class Commander_Rules : MonoBehaviour
             yield return null; //обновляет позицию сквада каждый кадр
         }
     }
-    void AttackCommand(squadcontrol our_squad, squadcontrol target_enemy_squad) //инициализация атаки на вражеский сквад
+    void AttackSquadCommand(squadcontrol our_squad, squadcontrol target_enemy_squad) //инициализация атаки на вражеский сквад
     {
         Debug.Log($"Squad {our_squad.this_squadname} attacks {target_enemy_squad.this_squadname}");
         our_squad.SetEnemySquad(target_enemy_squad); //установка вражеского сквада в качестве цели
-        if (AttackCoroutine != null) //если уже есть корутина атаки на вражеский сквад, то нужно её остановить
+        if (AttackCoroutines.ContainsKey(our_squad))
         {
-            StopCoroutine(AttackCoroutine);
+            if (AttackCoroutines[our_squad] != null)
+            {
+                StopCoroutine(AttackCoroutine); //если уже есть эта корутина атаки, то нужно остановить
+            }
+            AttackCoroutines.Remove(our_squad);
         }
-        AttackCoroutine = StartCoroutine(AttackMovement(our_squad, target_enemy_squad));
+        Coroutine newcoroutine = StartCoroutine(AttackSquadMovement(our_squad, target_enemy_squad)); //добавление новой корутины
+        AttackCoroutines[our_squad] = newcoroutine;
     }
 
-    //ВЫБОР ВРАЖЕСКОГО СКВАДА
-    void WithCursorSelectEnemySquad() //поиск выбранного мышью вражеского отряда
+    //ДВИЖЕНИЕ К КОМАНДИРУ ПРОТИВНИКА
+    IEnumerator AttackCommanderMovement(squadcontrol our_squad, EnemyCommander target_enemy_commander) //логика движения союзного сквада к цели-командиру
+    {
+        while (our_squad != null && target_enemy_commander != null)
+        {
+            Vector3 direction = (target_enemy_commander.transform.position - our_squad.transform.position).normalized;
+            our_squad.transform.position += direction * our_squad.speed * Time.deltaTime;
+            yield return null;
+        }
+    }
+    void AttackCommanderCommand(squadcontrol our_squad, EnemyCommander target_enemy_commander) //инициализация атаки на вражеского командира
+    {
+        Debug.Log($"Squad {our_squad.this_squadname} attacks {target_enemy_commander.MyName}");
+        our_squad.SetEnemyCommander(target_enemy_commander); //установка вражеского командира в качестве цели
+        if (AttackCoroutines.ContainsKey(our_squad)) 
+        {
+            if (AttackCoroutines[our_squad] != null)
+            {
+                StopCoroutine(AttackCoroutine); //если уже есть эта корутина атаки, то нужно остановить
+            }
+            AttackCoroutines.Remove(our_squad);
+        }
+        Coroutine newcoroutine = StartCoroutine(AttackCommanderMovement(our_squad, target_enemy_commander)); //добавление новой корутины
+        AttackCoroutines[our_squad] = newcoroutine;
+    }
+
+    //ВЫБОР ВРАЖЕСКОЙ ЦЕЛИ
+    void WithCursorSelectEnemyTarget() //поиск выбранного мышью вражеской цели
     {
         Vector3 game_mouse_position = GetMouseWorldCoordinate();
-        Collider2D[] possible_enemy_squad = Physics2D.OverlapCircleAll(game_mouse_position, SelectionRadius); //выделение всех возможных сквадов в радиусе курсора мыши
+        Collider2D[] possible_enemy_targets = Physics2D.OverlapCircleAll(game_mouse_position, SelectionRadius); //выделение всех возможных целей в радиусе курсора мыши
         bool enemyfound = false; //флаг на поиск врага
-        foreach (Collider2D enemy_squads in possible_enemy_squad) //цикл по всем выделенным сквадам
+        foreach (Collider2D target in possible_enemy_targets) //цикл по всем выделенным сквадам
         {
-            squadcontrol enemy_squad = enemy_squads.GetComponentInParent<squadcontrol>();
+            //выбор вражеского сквада
+            squadcontrol enemy_squad = target.GetComponentInParent<squadcontrol>();
             if (enemy_squad != null && enemy_squad.our_teamname != TeamName)
             {
                 if (SelectedSquad != null)
                 {
-                    AttackCommand(SelectedSquad, enemy_squad); //определение этого вражеского сквада — противниклм
+                    AttackSquadCommand(SelectedSquad, enemy_squad); //определение этого вражеского сквада — противником
                     enemyfound = true; //враг найден
+                    break;
+                }
+            }
+            //выбор вражеского командира
+            EnemyCommander enemy_commander = target.GetComponent<EnemyCommander>();
+            if (enemy_commander != null && enemy_commander.TeamName != TeamName)
+            {
+                if (SelectedSquad != null)
+                {
+                    AttackCommanderCommand(SelectedSquad, enemy_commander); //определение этого вражеского командира — противником
+                    enemyfound = true;
                     break;
                 }
             }
@@ -205,7 +249,7 @@ public class Commander_Rules : MonoBehaviour
     {
         if (player_mouse.rightButton.wasPressedThisFrame && SelectedSquad != null) //если была нажата правая кнопка мыши и есть вражеская группа
         {
-            WithCursorSelectEnemySquad();
+            WithCursorSelectEnemyTarget();
         }
     }
 
@@ -237,11 +281,15 @@ public class Commander_Rules : MonoBehaviour
         }
         flagdead = true;
         Debug.Log("Player Commander died!");
-        if (AttackCoroutine != null)
+        foreach (var coroutine in AttackCoroutines.Values)
         {
-            StopAllCoroutines();
-            AttackCoroutine = null; //лучше на всякий остановить и конкретную корутину атаки
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
         }
+        AttackCoroutines.Clear();
+
         squadcontrol[] allsquads = FindObjectsByType<squadcontrol>(FindObjectsSortMode.InstanceID);
         foreach (var squad in allsquads)
         {

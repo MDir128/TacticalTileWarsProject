@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -20,7 +21,7 @@ public class squadcontrol : MonoBehaviour
     [SerializeField] public GameObject unit_prefab;
     [SerializeField] public GameObject basedEnemyName;
     [SerializeField] public Color squadcolor;
-    public float speed = 0.5f;
+    public float speed = 2f;
     [SerializeField] statblock squadstats;
 
     public int squadId;  //для того чтобы я находил того кто получил модификации
@@ -105,6 +106,22 @@ public class squadcontrol : MonoBehaviour
                 }
         }}
     } //эта функция определяет сквад противника под атаку
+    public void SetEnemyCommander(EnemyCommander EnemyCommander)
+    {
+        if (EnemyCommander != null && units != null)
+        {
+            for (int i = 0; i < units.Length; i++)
+            {
+                if (units[i] != null)
+                {
+                    uniticontrol uniticontrol = units[i].GetComponentInChildren<uniticontrol>();
+                    {
+                        uniticontrol.targetted_enemy_commander = EnemyCommander;
+                    }
+                }
+            }
+        }
+    } //эта функция определяет командира противника под атаку
     public void SetPositions()
     {
         Unit_formation formation = new Unit_formation(new SemiRoundGen());

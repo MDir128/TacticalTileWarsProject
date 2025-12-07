@@ -14,6 +14,7 @@ public class uniticontrol : MonoBehaviour
     [SerializeField] public float recharge;
     [SerializeField] public uniticontrol targetted_enemy;
     [SerializeField] public GameObject my_position;
+    [SerializeField] public EnemyCommander targetted_enemy_commander;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private Dictionary<GameObject , uniticontrol> enemiescache;
@@ -96,6 +97,15 @@ public class uniticontrol : MonoBehaviour
     {
         uniticontrol targetted = null;
         Collider2D[] hitpossible = Physics2D.OverlapCircleAll(transform.position, statblock.attackrange);
+        if (targetted_enemy_commander != null)
+        {
+            float distance = Vector3.Distance(transform.position, targetted_enemy_commander.transform.position);
+            if (distance <= statblock.attackrange)
+            {
+                targetted_enemy_commander.HurtCommander(statblock.damage);
+                return "success";
+            }
+        }
         foreach (Collider2D collider in hitpossible)
         {
             uniticontrol victim = GetUnitscript(collider.gameObject);
@@ -132,13 +142,12 @@ public class uniticontrol : MonoBehaviour
                     return "success";
                 }
 
-                /*Commander_Rules PlayerCommander = collider.GetComponent<Commander_Rules>();
+                Commander_Rules PlayerCommander = collider.GetComponent<Commander_Rules>();
                 if (PlayerCommander != null && PlayerCommander.TeamName != my_teamname)
                 {
                     PlayerCommander.HurtCommander(statblock.damage);
                     return "success";
                 }
-                */
             }
             return "no";
         }
@@ -195,13 +204,12 @@ public class uniticontrol : MonoBehaviour
                         }
                     }
                     Destroy(parentsquad.gameObject);
-                    /*Commander_Rules PlayerCommander = FindFirstObjectByType<Commander_Rules>();
+                    Commander_Rules PlayerCommander = FindFirstObjectByType<Commander_Rules>();
                     if (PlayerCommander != null && PlayerCommander.TeamName == my_teamname)
                     {
                         PlayerCommander.SquadDeath(parentsquad);
                     }
                     Destroy(parentsquad.gameObject);
-                    */
                 }
             }
             Destroy(gameObject);
