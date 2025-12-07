@@ -1,58 +1,49 @@
 fileFormatVersion: 2
-guid: 563285efffba5c44097a45afa4802ace
+guid: 227ac5713c0e71546adb2e961beb86d6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9170973574751446751
-    second: lat_version_tiles_0
+      213: 510436693307999646
+    second: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_0"
   - first:
-      213: 2626697895362640920
-    second: lat_version_tiles_1
+      213: 4475312259139987822
+    second: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_1"
   - first:
-      213: 5440088007407895035
-    second: lat_version_tiles_2
+      213: 1442659681092335036
+    second: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_2"
   - first:
-      213: -1683821761928430273
-    second: lat_version_tiles_3
+      213: 8067258153044201432
+    second: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_3"
   - first:
-      213: 7181928429871719138
-    second: lat_version_tiles_4
+      213: 6969645864583496360
+    second: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_4"
   - first:
-      213: 2363171500195032355
-    second: lat_version_tiles_5
+      213: 4538187829404651306
+    second: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_5"
   - first:
-      213: -5927183349189466846
-    second: lat_version_tiles_6
+      213: 8312669975283642246
+    second: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_6"
   - first:
-      213: 3271425475437758493
-    second: lat_version_tiles_7
+      213: -8879016777619491759
+    second: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_7"
   - first:
-      213: -6814994086854567816
-    second: lat_version_tiles_8
+      213: 1081320148786682129
+    second: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_8"
   - first:
-      213: 7025761154615659294
-    second: lat_version_tiles_9
+      213: 1146527019155491463
+    second: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_9"
   - first:
-      213: 3764471239691726901
-    second: lat_version_tiles_10
+      213: 4244198511265426021
+    second: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_10"
   - first:
-      213: 8496962470175058977
-    second: lat_version_tiles_11
+      213: 2406126247755923554
+    second: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_11"
   - first:
-      213: -9182627793965397718
-    second: lat_version_tiles_12
+      213: -3683153788132881672
+    second: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_12"
   - first:
-      213: -4670944239802159500
-    second: lat_version_tiles_13
-  - first:
-      213: 7975308246147735585
-    second: lat_version_tiles_14
-  - first:
-      213: 8848637524299577524
-    second: lat_version_tiles_15
-  - first:
-      213: -9103615866493401283
-    second: lat_version_tiles_16
+      213: -970562403194100612
+    second: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_13"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -161,29 +152,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lat_version_tiles_0
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 737
-        width: 297
-        height: 342
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fd6ed8750e7d54f70800000000000000
-      internalID: 9170973574751446751
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lat_version_tiles_1
+      name: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_0"
       rect:
         serializedVersion: 2
         x: 312
@@ -198,14 +167,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 81c3b59a1d7e37420800000000000000
-      internalID: 2626697895362640920
+      spriteID: e95c2f8d77f651700800000000000000
+      internalID: 510436693307999646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lat_version_tiles_2
+      name: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_1"
       rect:
         serializedVersion: 2
         x: 615
@@ -220,14 +189,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bf1096c48331f7b40800000000000000
-      internalID: 5440088007407895035
+      spriteID: e696df8d9c08b1e30800000000000000
+      internalID: 4475312259139987822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lat_version_tiles_3
+      name: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_2"
       rect:
         serializedVersion: 2
         x: 930
@@ -242,14 +211,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f3dfe2f570dd1a8e0800000000000000
-      internalID: -1683821761928430273
+      spriteID: cb5794f165b550410800000000000000
+      internalID: 1442659681092335036
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lat_version_tiles_4
+      name: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_3"
       rect:
         serializedVersion: 2
         x: 1255
@@ -264,14 +233,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2e268c00bd55ba360800000000000000
-      internalID: 7181928429871719138
+      spriteID: 8dfc29b4c88a4ff60800000000000000
+      internalID: 8067258153044201432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lat_version_tiles_5
+      name: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_4"
       rect:
         serializedVersion: 2
         x: 1577
@@ -286,36 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 32da37475fbabc020800000000000000
-      internalID: 2363171500195032355
+      spriteID: 8a205c0bcf729b060800000000000000
+      internalID: 6969645864583496360
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lat_version_tiles_6
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 368
-        width: 297
-        height: 342
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 225a3f0c52a6ebda0800000000000000
-      internalID: -5927183349189466846
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lat_version_tiles_7
+      name: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_5"
       rect:
         serializedVersion: 2
         x: 320
@@ -330,14 +277,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d1881ac1320766d20800000000000000
-      internalID: 3271425475437758493
+      spriteID: a2f4aa759c1eafe30800000000000000
+      internalID: 4538187829404651306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lat_version_tiles_8
+      name: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_6"
       rect:
         serializedVersion: 2
         x: 624
@@ -352,20 +299,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 87855a24cf64c61a0800000000000000
-      internalID: -6814994086854567816
+      spriteID: 68f26d3dc498c5370800000000000000
+      internalID: 8312669975283642246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lat_version_tiles_9
+      name: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_7"
       rect:
         serializedVersion: 2
         x: 934
         y: 369
         width: 300
-        height: 343
+        height: 348
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -374,14 +321,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e1bca99cb84808160800000000000000
-      internalID: 7025761154615659294
+      spriteID: 154b147a84567c480800000000000000
+      internalID: -8879016777619491759
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lat_version_tiles_10
+      name: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_8"
       rect:
         serializedVersion: 2
         x: 1261
@@ -396,14 +343,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 530fff0c5a61e3430800000000000000
-      internalID: 3764471239691726901
+      spriteID: 11917ec32fe910f00800000000000000
+      internalID: 1081320148786682129
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lat_version_tiles_11
+      name: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_9"
       rect:
         serializedVersion: 2
         x: 1580
@@ -418,36 +365,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 12c2c9809564be570800000000000000
-      internalID: 8496962470175058977
+      spriteID: 78a8626df3849ef00800000000000000
+      internalID: 1146527019155491463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lat_version_tiles_12
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 1
-        width: 297
-        height: 342
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a29401c4ca0c09080800000000000000
-      internalID: -9182627793965397718
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lat_version_tiles_13
+      name: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_10"
       rect:
         serializedVersion: 2
         x: 327
@@ -462,14 +387,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 47e6fec26f87d2fb0800000000000000
-      internalID: -4670944239802159500
+      spriteID: 56aa73c2f0c66ea30800000000000000
+      internalID: 4244198511265426021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lat_version_tiles_14
+      name: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_11"
       rect:
         serializedVersion: 2
         x: 632
@@ -484,20 +409,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 12021e9489cfdae60800000000000000
-      internalID: 7975308246147735585
+      spriteID: 2604c3af217446120800000000000000
+      internalID: 2406126247755923554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lat_version_tiles_15
+      name: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_12"
       rect:
         serializedVersion: 2
         x: 940
-        y: 8
-        width: 300
-        height: 343
+        y: 0
+        width: 306
+        height: 351
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -506,14 +431,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4b8711e32fcacca70800000000000000
-      internalID: 8848637524299577524
+      spriteID: 8fa8435d42fc2ecc0800000000000000
+      internalID: -3683153788132881672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: lat_version_tiles_16
+      name: "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_13"
       rect:
         serializedVersion: 2
         x: 1266
@@ -528,8 +453,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d370d0a3a9579a180800000000000000
-      internalID: -9103615866493401283
+      spriteID: c742445f2aed782f0800000000000000
+      internalID: -970562403194100612
       vertices: []
       indices: 
       edges: []
@@ -548,23 +473,20 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      lat_version_tiles_0: 9170973574751446751
-      lat_version_tiles_1: 2626697895362640920
-      lat_version_tiles_10: 3764471239691726901
-      lat_version_tiles_11: 8496962470175058977
-      lat_version_tiles_12: -9182627793965397718
-      lat_version_tiles_13: -4670944239802159500
-      lat_version_tiles_14: 7975308246147735585
-      lat_version_tiles_15: 8848637524299577524
-      lat_version_tiles_16: -9103615866493401283
-      lat_version_tiles_2: 5440088007407895035
-      lat_version_tiles_3: -1683821761928430273
-      lat_version_tiles_4: 7181928429871719138
-      lat_version_tiles_5: 2363171500195032355
-      lat_version_tiles_6: -5927183349189466846
-      lat_version_tiles_7: 3271425475437758493
-      lat_version_tiles_8: -6814994086854567816
-      lat_version_tiles_9: 7025761154615659294
+      "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_0": 510436693307999646
+      "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_1": 4475312259139987822
+      "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_10": 4244198511265426021
+      "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_11": 2406126247755923554
+      "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_12": -3683153788132881672
+      "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_13": -970562403194100612
+      "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_2": 1442659681092335036
+      "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_3": 8067258153044201432
+      "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_4": 6969645864583496360
+      "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_5": 4538187829404651306
+      "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_6": 8312669975283642246
+      "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_7": -8879016777619491759
+      "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_8": 1081320148786682129
+      "\u0441\u043F\u0440\u0430\u0439\u0442_\u043B\u0438\u0441\u0442_\u0442\u0430\u0439\u043B\u044B_9": 1146527019155491463
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
