@@ -298,7 +298,6 @@ public class HexagonalMap : MonoBehaviour
                 GameObject tileObj = Instantiate(prefab, transform);
                 tileObj.transform.position = tile.WorldPosition;
 
-                tileObj.transform.Rotate(0, 0, 90); // Для flat-top гексов поворот не нужен, они уже должны быть правильно ориентированы в префабе, но поскольку в префабе гекс point-top, то:
 
                 tileObjects.Add(tile.GridPosition, tileObj);
             }

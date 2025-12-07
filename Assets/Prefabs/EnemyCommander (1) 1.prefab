@@ -112,6 +112,7 @@ MonoBehaviour:
   recharge: 0
   targetted_enemy: {fileID: 0}
   my_position: {fileID: 6851531256375794977}
+  targetted_enemy_commander: {fileID: 0}
 --- !u!61 &3570501016121351567
 BoxCollider2D:
   m_ObjectHideFlags: 0
