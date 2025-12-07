@@ -48,7 +48,7 @@ public class manager : MonoBehaviour
     {
         castlescords = new Vector3[6];
         foreach (var castle in map.GetCastlesDictionary()) {
-            castlescords[castle.Key-1] = new Vector3(castle.Value.x/0.6f, castle.Value.y/0.6f, -1f);
+            castlescords[castle.Key-1] = new Vector3(castle.Value.x, castle.Value.y, -1f);
         }
     }
 }

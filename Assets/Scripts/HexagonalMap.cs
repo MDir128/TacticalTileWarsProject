@@ -44,8 +44,8 @@ public class HexagonalMap : MonoBehaviour
     private Dictionary<Vector2Int, HexTile> hexGrid = new Dictionary<Vector2Int, HexTile>();
     private Dictionary<Vector2Int, GameObject> tileObjects = new Dictionary<Vector2Int, GameObject>();
 
-    // Словарь для хранения данных о замках: {номер замка, координата Castle1 (правого тайла)}
-    private Dictionary<int, Vector2Int> castlesDictionary = new Dictionary<int, Vector2Int>();
+    // Словарь для хранения данных о замках: {номер замка, МИРОВАЯ координата Castle1}
+    private Dictionary<int, Vector2> castlesDictionary = new Dictionary<int, Vector2>();
 
     //Eventhandler чтобы знать когда закончилась генерация.
     public EventHandler<bool> onload;
@@ -150,8 +150,9 @@ public class HexagonalMap : MonoBehaviour
                 {
                     if (Check2x2Pattern(centerTile))
                     {
-                        // Сохраняем координату Castle1 в словарь
-                        castlesDictionary[castleNumber] = centerTile;
+                        // Сохраняем МИРОВУЮ координату Castle1 в словарь
+                        Vector3 worldPos = GridToWorldPosition(centerTile);
+                        castlesDictionary[castleNumber] = new Vector2(worldPos.x, worldPos.y);
 
                         ReplaceTilesWithCastle(centerTile, castleNumber);
                         foundCastleSpot = true;
@@ -282,19 +283,19 @@ public class HexagonalMap : MonoBehaviour
     }
 
     // Метод для доступа к словарю замков из других скриптов
-    public Dictionary<int, Vector2Int> GetCastlesDictionary()
+    public Dictionary<int, Vector2> GetCastlesDictionary()
     {
-        return new Dictionary<int, Vector2Int>(castlesDictionary);
+        return new Dictionary<int, Vector2>(castlesDictionary);
     }
 
     // Метод для получения координаты конкретного замка
-    public bool TryGetCastlePosition(int castleNumber, out Vector2Int castle1Position)
+    public bool TryGetCastlePosition(int castleNumber, out Vector2 castleWorldPosition)
     {
-        return castlesDictionary.TryGetValue(castleNumber, out castle1Position);
+        return castlesDictionary.TryGetValue(castleNumber, out castleWorldPosition);
     }
 
     // Метод для получения всех замков
-    public IEnumerable<KeyValuePair<int, Vector2Int>> GetAllCastles()
+    public IEnumerable<KeyValuePair<int, Vector2>> GetAllCastles()
     {
         foreach (var castle in castlesDictionary)
         {
@@ -308,7 +309,7 @@ public class HexagonalMap : MonoBehaviour
         Debug.Log($"Total castles placed: {castlesDictionary.Count}");
         foreach (var castle in castlesDictionary)
         {
-            Debug.Log($"Castle {castle.Key}: Castle1 position = {castle.Value}");
+            Debug.Log($"Castle {castle.Key}: World position = {castle.Value}");
         }
     }
 
@@ -323,22 +324,20 @@ public class HexagonalMap : MonoBehaviour
             DrawHexagonGizmo(tile.WorldPosition, hexSize);
         }
 
-        // Визуализация позиций замков
+        // Визуализация позиций замков (МИРОВЫЕ координаты)
         if (castlesDictionary.Count > 0)
         {
             Gizmos.color = Color.yellow;
-            foreach (var castle in castlesDictionary.Values)
+            foreach (var castlePos in castlesDictionary.Values)
             {
-                if (hexGrid.ContainsKey(castle))
-                {
-                    Vector3 worldPos = hexGrid[castle].WorldPosition;
-                    Gizmos.DrawSphere(worldPos, hexSize * 0.3f);
-                }
+                // Это уже мировые координаты
+                Vector3 worldPos = new Vector3(castlePos.x, castlePos.y, 0);
+                Gizmos.DrawSphere(worldPos, hexSize * 0.3f);
             }
         }
     }
 
-    // Метод для рисования гексагона (исправленное имя)
+    // Метод для рисования гексагона
     private void DrawHexagonGizmo(Vector3 center, float size)
     {
         Vector3[] vertices = new Vector3[6];
