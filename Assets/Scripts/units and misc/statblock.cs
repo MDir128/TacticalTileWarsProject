@@ -16,38 +16,5 @@ public class statblock
 
 }
 
-class updater
-{
-    
-void updAtackrange()
-{
-    
-}
 
-void updWalkrange()
-{
-    
-}
-
-void upddamge()
-{
-    
-}
-
-void updatackdelay()
-{
-    
-}
-
-void updhealth()
-{
-    
-}
-
-void updspeed()
-{
-    
-}
-
-}
 

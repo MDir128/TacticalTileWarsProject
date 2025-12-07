@@ -313,5 +313,11 @@ public class Commander_Rules : MonoBehaviour
             }
         }
     }
+
+public squadcontrol[] GetPlayerSquads()
+    {
+        return PlayerSquads;
+    }
+
 }
 

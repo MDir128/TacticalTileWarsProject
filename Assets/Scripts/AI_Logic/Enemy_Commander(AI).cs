@@ -10,19 +10,19 @@ public class EnemyCommander : MonoBehaviour
     [SerializeField] public string TeamName = "Red";
     [SerializeField] public string MyName = "Jack";
     [SerializeField] private float OurEnemyCommanderHealth = 20f;
-    [SerializeField] private float DecisionsIntervalTime = 3f; //логика продолжительности отрезков времени между принятиями решений (атаковать, отступать) в секундах
+    [SerializeField] private float DecisionsIntervalTime = 3f; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ) пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     [Header("Enemy squads settings")]
-    [SerializeField] private squadcontrol[] OurEnemySquads = new squadcontrol[3]; //массив отрядов (ближний бой, дальнобойные и конницы)
+    [SerializeField] private squadcontrol[] OurEnemySquads = new squadcontrol[3]; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)
     [SerializeField] public GameObject unitprefab;
     [Header("Other settings")]
-    private string Behavior = "Attack"; //модель поведения 
-    private float LogicTime = 0f; //таймер времени следующего решения
+    private string Behavior = "Attack"; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
+    private float LogicTime = 0f; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private commander commander;
     private bool flagdead = false;
 
     void Start()    
     {
-        commander = gameObject.AddComponent<commander>(); //нахождение и определение типа командира 
+        commander = gameObject.AddComponent<commander>(); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 
         commander.Init(TeamName, MyName, new GameObject[3], unitprefab);
         for (int i = 0; i < 3; i++)
         {
@@ -36,14 +36,14 @@ public class EnemyCommander : MonoBehaviour
         {
             return;
         }
-        //определение поведения
+        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (Time.time >= LogicTime)
         {
             BehaviorAssessment();
-            LogicTime = Time.time + DecisionsIntervalTime; //таймер принятия следующего решения увеличивается
+            LogicTime = Time.time + DecisionsIntervalTime; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         }
-        ChoiceBehavior(); //каждый кадр выбирается поведение
-        //проверка смерти командира
+        ChoiceBehavior(); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (OurEnemyCommanderHealth <= 0)
         {
             CommanderDeath();
@@ -51,8 +51,8 @@ public class EnemyCommander : MonoBehaviour
         }
     }
 
-    //ПОДСЧЁТ ЮНИТОВ
-    int EnemyAliveUnits() //подсчёт выживших союзных юнитов
+    //пїЅпїЅпїЅпїЅЧЁпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    int EnemyAliveUnits() //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     {
         int enemy_units = 0;
         foreach (var squad in OurEnemySquads)
@@ -64,9 +64,9 @@ public class EnemyCommander : MonoBehaviour
         }
         return enemy_units;
     }
-    int PlayerAliveUnits() //подсчёт выживших юнитов игрока
+    int PlayerAliveUnits() //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     {
-        squadcontrol[] AllSquads = FindObjectsByType<squadcontrol>(FindObjectsSortMode.InstanceID); //поиск сквадов игрока
+        squadcontrol[] AllSquads = FindObjectsByType<squadcontrol>(FindObjectsSortMode.InstanceID); //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         int player_units = 0;
         foreach (var squad in AllSquads)
         {
@@ -79,11 +79,11 @@ public class EnemyCommander : MonoBehaviour
     }
 
 
-    squadcontrol ClosestEnemySquad() //нахождение ближайшего вражеского отряда 
+    squadcontrol ClosestEnemySquad() //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 
     {
         squadcontrol[] AllSquads = FindObjectsByType<squadcontrol>(FindObjectsSortMode.InstanceID);
         squadcontrol closest_enemysquad = null;
-        float mindistance = Mathf.Infinity; //полезно, ведь при будущем сравнении не найдётся отряда большего положительной бесконечности
+        float mindistance = Mathf.Infinity; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         foreach (var squad in AllSquads)
         {
             if (squad != null && squad.our_teamname != TeamName && squad.CountAliveUnits() > 0)
@@ -98,10 +98,10 @@ public class EnemyCommander : MonoBehaviour
         }
         return closest_enemysquad;
     }
-    Transform ClosestEnemyCommander() //нахождение ближайшего командира врага
+    Transform ClosestEnemyCommander() //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     {
         Transform closestcommander = null;
-        float mindistance = Mathf.Infinity; //полезно, ведь при будущем сравнении не найдётся отряда большего положительной бесконечности
+        float mindistance = Mathf.Infinity; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         Commander_Rules playercommander = FindAnyObjectByType<Commander_Rules>();
         if (playercommander != null && playercommander.TeamName == "Blue")
         {
@@ -128,51 +128,51 @@ public class EnemyCommander : MonoBehaviour
         return closestcommander;
     }
 
-    //ОЦЕНКА УГРОЗЫ И ОПРЕДЕЛЕНИЕ ПОВЕДЕНИЯ
-    float ThreatAssessment() //оценка угрозы
+    //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    float ThreatAssessment() //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     {
         float threat_level = 0f;
-        //первый уровень — оценка здоровья командира
-        float threat_health_level = ((100 - OurEnemyCommanderHealth) / 100f) * 50f; //показатель угрозы по здоровью командира (диапазон от 0 до 50)
-        //второй уровень — оценка количества вражеских сил
-        int my_units_num = EnemyAliveUnits(); //количество юнитов у этого вражеского командира
-        int enemy_units_num = PlayerAliveUnits(); //количество юнитов у нашего игрока 
-        float threat_numforce_level = 0f; //показатель уровня угрозы по разнице сил (диапазон от -50 до 100)
+        //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        float threat_health_level = ((100 - OurEnemyCommanderHealth) / 100f) * 50f; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ 0 пїЅпїЅ 50)
+        //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ
+        int my_units_num = EnemyAliveUnits(); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+        int enemy_units_num = PlayerAliveUnits(); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 
+        float threat_numforce_level = 0f; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ -50 пїЅпїЅ 100)
         if (my_units_num > 0 && enemy_units_num > 0)
         {
             if (my_units_num > enemy_units_num)
             {
-                threat_numforce_level = -25f; //низкая угроза 
+                threat_numforce_level = -25f; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 
             }
             else if (my_units_num < enemy_units_num)
             {
-                threat_numforce_level = ((float)enemy_units_num / my_units_num) * 25f; //средняя-экстремальная угроза
+                threat_numforce_level = ((float)enemy_units_num / my_units_num) * 25f; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             }
             else
             {
-                threat_numforce_level = 15f; //средняя угроза
+                threat_numforce_level = 15f; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             }
         }
         else if (my_units_num > 0 && enemy_units_num == 0)
         {
-            threat_numforce_level = -50f; //очень низкая угроза
+            threat_numforce_level = -50f; //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         }
         else if (my_units_num == 0 && enemy_units_num > 0)
         {
-            threat_numforce_level = 50f; //высокая угроза
+            threat_numforce_level = 50f; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         }
-        //общий уровень угрозы
+        //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         threat_level = threat_health_level + threat_numforce_level;
-        return Mathf.Clamp(threat_level, 0f, 100f); //определение уровня угрозы конкретно в заданном диапазоне
+        return Mathf.Clamp(threat_level, 0f, 100f); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     }    
-    void BehaviorAssessment() //определение поведения при уровне угрозы
+    void BehaviorAssessment() //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     {
         float threat_level = ThreatAssessment();
-        if (threat_level < 40f) //очень низкая, низкая, средняя угроза
+        if (threat_level < 40f) //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         {
             Behavior = "Attack";
         }
-        else if (threat_level >= 40f && threat_level <= 70f) //случайный выбор поведения при высокой угрозе
+        else if (threat_level >= 40f && threat_level <= 70f) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         {
             int random_behavior = Random.Range(0, 3);
             if (random_behavior == 0)
@@ -188,7 +188,7 @@ public class EnemyCommander : MonoBehaviour
                 Behavior = "Defend Commander";
             }
         }
-        else if (threat_level > 70f && threat_level < 100f) //случайный выбор поведения при очень высокой угрозе
+        else if (threat_level > 70f && threat_level < 100f) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         {
             int random_behavior = Random.Range(0, 2);
             if (random_behavior == 0)
@@ -200,14 +200,14 @@ public class EnemyCommander : MonoBehaviour
                 Behavior = "Defend Commander";
             }
         }
-        else //экстремальная угроза
+        else //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         {
             Behavior = "Retreat";
         }
     }    
 
-    //СЦЕНАРИИ ПОВЕДЕНИЯ
-    void AttackBehavior() //поведение при Атаке
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    void AttackBehavior() //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     {
         squadcontrol allysquad = ClosestEnemySquad();
         Transform allycommander = ClosestEnemyCommander();
@@ -235,19 +235,19 @@ public class EnemyCommander : MonoBehaviour
             }
         }
     }
-    void RetreatBehavior() //поведение при Отступлении
+    void RetreatBehavior() //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     {
         squadcontrol enemysquad = ClosestEnemySquad();
         if (enemysquad == null)
         {
             return;
         }
-        float enemydistance = Vector3.Distance(transform.position, enemysquad.transform.position); //отступление только если слишком быстро к игроку
+        float enemydistance = Vector3.Distance(transform.position, enemysquad.transform.position); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         if (enemydistance < 10f)
         {
-            Vector3 retreatdirection = (transform.position - enemysquad.transform.position).normalized; //построение вектора от командира игрока к командиру врага
-            Vector3 retreatposition = transform.position + retreatdirection * 3f; //задача точки отступления
-            transform.position = Vector3.MoveTowards(transform.position, retreatposition, 1.5f * Time.deltaTime); //уход к точке отступления
+            Vector3 retreatdirection = (transform.position - enemysquad.transform.position).normalized; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+            Vector3 retreatposition = transform.position + retreatdirection * 3f; //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            transform.position = Vector3.MoveTowards(transform.position, retreatposition, 1.5f * Time.deltaTime); //пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         }
         else
         {
@@ -261,21 +261,21 @@ public class EnemyCommander : MonoBehaviour
             }
         }
     }
-    void DefendCommanderBehavior() //поведение при Защите командира
+    void DefendCommanderBehavior() //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     {
         for (int i = 0; i < OurEnemySquads.Length; i++)
         {
             if (OurEnemySquads[i] != null && OurEnemySquads[i].CountAliveUnits() > 0)
             {
-                float angle = i * 120f; //угол для равномерного распределения отрядов
+                float angle = i * 120f; //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 Vector3 offset_from_commander = Quaternion.Euler(0, 0, angle) * Vector3.right * 1.5f;
-                Vector3 defensecommanderposition = transform.position + offset_from_commander; //целевая позиция — позиция командира + смещение от него
+                Vector3 defensecommanderposition = transform.position + offset_from_commander; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ + пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
                 OurEnemySquads[i].Gotopoint_global(defensecommanderposition);
             }
         }
     }
 
-    void CommanderMovement() //перемещение командира вместе с отрядами
+    void CommanderMovement() //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     {
         Vector3 centerposition = Vector3.zero; 
         int count_alivesquads = 0;    
@@ -283,18 +283,18 @@ public class EnemyCommander : MonoBehaviour
         {
             if (squad != null && squad.CountAliveUnits() > 0)
             {
-                centerposition += squad.transform.position; //суммирование позиций живых отрядов
+                centerposition += squad.transform.position; //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 count_alivesquads++;
             }
         }
         if (count_alivesquads > 0)
         {
-            centerposition /= count_alivesquads; //центр — среднее арифметическое от количества отрядов
-            transform.position = Vector3.MoveTowards(transform.position, centerposition, 3f * Time.deltaTime); //перемещение за отрядами
+            centerposition /= count_alivesquads; //пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+            transform.position = Vector3.MoveTowards(transform.position, centerposition, 3f * Time.deltaTime); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         }
     }
 
-    void ChoiceBehavior() //выбор поведения
+    void ChoiceBehavior() //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     {
         switch (Behavior)
         {
@@ -311,8 +311,8 @@ public class EnemyCommander : MonoBehaviour
         CommanderMovement();
     }
 
-    //УНИЧТОЖЕНИЕ КОМАНДИРА, ПОЛУЧЕНИЕ КОМАНДДИРОМ УРОНА И УНИЧТОЖЕНИЕ ОТРЯДОВ
-    void CommanderDeath() //смерть командира
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    void CommanderDeath() //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     {
         if (flagdead == true)
         {
@@ -331,14 +331,14 @@ public class EnemyCommander : MonoBehaviour
         }
         if (transform.parent != null)
         {
-            Destroy(transform.parent.gameObject); //уничтожается родительский элемент
+            Destroy(transform.parent.gameObject); //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         }
         else
         {
             Destroy(gameObject); 
         }
     }
-    public void HurtCommander(float damage) //вражеский командир получает урон
+    public void HurtCommander(float damage) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     {
         if (flagdead == true)
         {
@@ -352,7 +352,7 @@ public class EnemyCommander : MonoBehaviour
             CommanderDeath();
         }
     }
-    public void SquadDeath(squadcontrol destroyedsquad) //уничтожение всего отряда
+    public void SquadDeath(squadcontrol destroyedsquad) //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     {
         for (int i = 0; i < OurEnemySquads.Length; i++)
         {
@@ -364,4 +364,10 @@ public class EnemyCommander : MonoBehaviour
             }
         }
     }
+
+    public squadcontrol[] GetOurEnemySquads()
+    {
+        return OurEnemySquads;
+    }
+
 }

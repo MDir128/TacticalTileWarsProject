@@ -51,4 +51,16 @@ public class manager : MonoBehaviour
             castlescords[castle.Key-1] = new Vector3(castle.Value.x, castle.Value.y, -1f);
         }
     }
+
+    public (GameObject[] blueCommanders, GameObject[] redCommanders) GetCommandersForCardSystem()
+    {
+        // Возвращаем синих (игрок) и красных (враг) командиров
+        return (commanderssecond, commandersfirst);
+    }
+    
+    // Альтернативный вариант - раздельные геттеры
+    public GameObject[] GetBlueCommanders() => commanderssecond;
+    public GameObject[] GetRedCommanders() => commandersfirst;
+
 }
+
