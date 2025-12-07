@@ -189,7 +189,10 @@ public class AllyCommander : MonoBehaviour
             {
                 Vector3 attackdirection = (enemysquad.transform.position - squad.transform.position).normalized; //построение вектора траектории направления движения
                 squad.transform.position += attackdirection * squad.speed * Time.deltaTime; //перемещение союзной группы
-                squad.SetEnemySquad(enemysquad);
+                if (enemysquad != null)
+                {
+                    squad.SetEnemySquad(enemysquad);
+                }
             }
         }
     }

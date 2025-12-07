@@ -46,11 +46,11 @@ public class Commander_Rules : MonoBehaviour
             CommanderDeath();
             return;
         }
+        WithWASDPlayerMovement();
         if (player_mouse == null)
         {
             return;
         }
-
         PlayerSquadSelection();
         EnemySquadSelection();
     }
@@ -95,6 +95,45 @@ public class Commander_Rules : MonoBehaviour
         if (player_mouse.leftButton.wasPressedThisFrame) //если была нажата левая кнопка мыши
         {
             WithCursorSelectSquad();
+        }
+    }
+
+    //ПЕРЕМЕЩЕНИЕ КОМАНДИРА СО СКВАДАМИ
+    void WithWASDPlayerMovement() //перемещение командира с отрядами через клавиатуру
+    {
+        Vector3 movement_direction = Vector3.zero; //установка позиции по умолчанию
+        if (Keyboard.current.wKey.isPressed)
+        {
+            movement_direction.y += 1;
+        }
+        if (Keyboard.current.aKey.isPressed)
+        {
+            movement_direction.x -= 1;
+        }
+        if (Keyboard.current.sKey.isPressed)
+        {
+            movement_direction.y -= 1;
+        }
+        if (Keyboard.current.dKey.isPressed)
+        {
+            movement_direction.x += 1;
+        }
+        if (movement_direction != Vector3.zero)
+        {
+            movement_direction.Normalize(); //нормализация вектора для статичного движения
+            transform.position += movement_direction * CommanderSpeed * Time.deltaTime; //двжиение командира
+            PlayerSquadsMovement(); //движение отрядов за командиром
+        }
+    }
+    void PlayerSquadsMovement() //следование отрядов за командиром
+    {
+        foreach (var squad in PlayerSquads)
+        {
+            if (squad != null && squad.CountAliveUnits() > 0)
+            {
+                squad.SetEnemySquad(null); //сначала нужно сбросить цель на атаку, если она есть
+                squad.PlayerSquadFollow(transform.position); //движение отрядов относительно позиции командира
+            }
         }
     }
 

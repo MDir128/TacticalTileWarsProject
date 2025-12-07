@@ -52,7 +52,6 @@ public class uniticontrol : MonoBehaviour
     {
         if (targetted_enemy != null)
         {
-            if (Vector3.Distance(transform.position, targetted_enemy.transform.position) < statblock.walkrange)
             MoveToTarget();
         }
         else
@@ -147,7 +146,7 @@ public class uniticontrol : MonoBehaviour
     void MoveToTarget()
     {
         float distance = Vector3.Distance(transform.position, targetted_enemy.transform.position);
-        if (targetted_enemy != null && distance>= statblock.attackrange*0.8)
+        if (targetted_enemy != null && distance> statblock.attackrange)
         {
             transform.position = Vector3.MoveTowards(
                 transform.position,
