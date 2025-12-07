@@ -175,7 +175,7 @@ public class Commander_Rules : MonoBehaviour
         {
             if (AttackCoroutines[our_squad] != null)
             {
-                StopCoroutine(AttackCoroutine); //если уже есть эта корутина атаки, то нужно остановить
+                StopCoroutine(AttackCoroutines[our_squad]); //если уже есть эта корутина атаки, то нужно остановить
             }
             AttackCoroutines.Remove(our_squad);
         }
@@ -201,7 +201,7 @@ public class Commander_Rules : MonoBehaviour
         {
             if (AttackCoroutines[our_squad] != null)
             {
-                StopCoroutine(AttackCoroutine); //если уже есть эта корутина атаки, то нужно остановить
+                StopCoroutine(AttackCoroutines[our_squad]); //если уже есть эта корутина атаки, то нужно остановить
             }
             AttackCoroutines.Remove(our_squad);
         }
