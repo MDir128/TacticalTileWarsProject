@@ -178,7 +178,6 @@ public class squadcontrol : MonoBehaviour
     {
         Vector3 target_position = commander_position + new Vector3(UnityEngine.Random.Range(-3f, 3f), UnityEngine.Random.Range(-3, 3f), 0);
         Gotopoint_global(target_position);
-
     }
 }
 

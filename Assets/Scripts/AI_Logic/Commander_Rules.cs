@@ -318,6 +318,5 @@ public squadcontrol[] GetPlayerSquads()
     {
         return PlayerSquads;
     }
-
 }
 

@@ -13,7 +13,6 @@ public class statblock
     public float health = 10f;
 
     public float speed = 0.5f;
-
 }
 
 

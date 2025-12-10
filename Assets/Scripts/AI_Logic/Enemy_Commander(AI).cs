@@ -364,10 +364,8 @@ public class EnemyCommander : MonoBehaviour
             }
         }
     }
-
     public squadcontrol[] GetOurEnemySquads()
     {
         return OurEnemySquads;
     }
-
 }
